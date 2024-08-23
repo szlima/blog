@@ -1,5 +1,6 @@
 
 import Header from './Header';
+import Navbar from './Navbar';
 
 function Blog() {
 
@@ -7,6 +8,7 @@ function Blog() {
     <div className="blog">
 
       <Header />
+      <Navbar/>
 
     </div>
   );
