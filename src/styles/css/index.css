@@ -47,25 +47,25 @@ body {
   }
 }
 
-.header .title {
+.header {
   padding: 2rem 1rem;
   text-align: center;
 }
 @media only screen and (min-width: 1200px) {
-  .header .title {
+  .header {
     padding: 4rem 1rem;
   }
 }
-.header .title__name {
+.header__title {
   font-family: var(--highlight-font);
   font-size: 3.5rem;
 }
 @media only screen and (min-width: 1200px) {
-  .header .title__name {
+  .header__title {
     font-size: 5rem;
   }
 }
-.header .title__description {
+.header__description {
   margin: 0.5rem 0;
   color: var(--main-color);
   font-size: 0.9rem;

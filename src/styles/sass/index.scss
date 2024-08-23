@@ -40,34 +40,29 @@ body{
 }
 
 .header{
+    padding: 2rem 1rem;
+    text-align: center;
 
-    .title{
-        padding: 2rem 1rem;
-        text-align: center;
+    @include mixins.for-desktop-up{
+        padding: 4rem 1rem;
+    }
+
+    &__title{
+        font-family: var(--highlight-font);
+        font-size: 3.5rem;
 
         @include mixins.for-desktop-up{
-            padding: 4rem 1rem;
-        }
-
-        &__name{
-            font-family: var(--highlight-font);
-            font-size: 3.5rem;
-
-            @include mixins.for-desktop-up{
-                font-size: 5rem;
-            }
-        }
-
-        &__description{
-            margin: .5rem 0;
-
-            color: var(--main-color);
-
-            font-size: .9rem;
-            letter-spacing: 2px;
-            text-transform: lowercase;
+            font-size: 5rem;
         }
     }
 
+    &__description{
+        margin: .5rem 0;
 
+        color: var(--main-color);
+
+        font-size: .9rem;
+        letter-spacing: 2px;
+        text-transform: lowercase;
+    }
 }
