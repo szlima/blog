@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap');
 
 :root{
     --secondary-color--1: #fff;
@@ -5,4 +6,8 @@
     --highlight-color--1: #ebdefc;
     --highlight-color--2: #f3e3f3;
     --main-color: #5d598f;
+    --default-color: #555;
+
+    --main-font: sans-serif;
+    --highlight-font: "WindSong", cursive;
 }

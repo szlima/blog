@@ -12,6 +12,10 @@ body{
     height: 100dvh;    
 
     background-color: var(--secondary-color--2);
+    color: var(--default-color);
+
+    font-family: var(--main-font);
+    font-size: 1.1rem;
 
     @include mixins.for-desktop-up{
         padding: 2rem;
@@ -28,4 +32,42 @@ body{
     height: 100%;
 
     background-color: var(--secondary-color--1);
+
+    @include mixins.for-desktop-up{
+        border: 1px solid var(--highlight-color--2);
+        border-radius: 1rem;
+    }
+}
+
+.header{
+
+    .title{
+        padding: 2rem 1rem;
+        text-align: center;
+
+        @include mixins.for-desktop-up{
+            padding: 4rem 1rem;
+        }
+
+        &__name{
+            font-family: var(--highlight-font);
+            font-size: 3.5rem;
+
+            @include mixins.for-desktop-up{
+                font-size: 5rem;
+            }
+        }
+
+        &__description{
+            margin: .5rem 0;
+
+            color: var(--main-color);
+
+            font-size: .9rem;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+        }
+    }
+
+
 }

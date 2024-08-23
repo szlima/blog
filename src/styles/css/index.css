@@ -1,9 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap");
 :root {
   --secondary-color--1: #fff;
   --secondary-color--2: #fbf6fa;
   --highlight-color--1: #ebdefc;
   --highlight-color--2: #f3e3f3;
   --main-color: #5d598f;
+  --default-color: #555;
+  --main-font: sans-serif;
+  --highlight-font: "WindSong", cursive;
 }
 
 * {
@@ -16,6 +20,9 @@ body {
   width: 100dvw;
   height: 100dvh;
   background-color: var(--secondary-color--2);
+  color: var(--default-color);
+  font-family: var(--main-font);
+  font-size: 1.1rem;
 }
 @media only screen and (min-width: 1200px) {
   body {
@@ -32,6 +39,38 @@ body {
   width: 100%;
   height: 100%;
   background-color: var(--secondary-color--1);
+}
+@media only screen and (min-width: 1200px) {
+  .blog {
+    border: 1px solid var(--highlight-color--2);
+    border-radius: 1rem;
+  }
+}
+
+.header .title {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+@media only screen and (min-width: 1200px) {
+  .header .title {
+    padding: 4rem 1rem;
+  }
+}
+.header .title__name {
+  font-family: var(--highlight-font);
+  font-size: 3.5rem;
+}
+@media only screen and (min-width: 1200px) {
+  .header .title__name {
+    font-size: 5rem;
+  }
+}
+.header .title__description {
+  margin: 0.5rem 0;
+  color: var(--main-color);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: lowercase;
 }
 
 /*# sourceMappingURL=index.css.map */

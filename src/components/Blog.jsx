@@ -1,8 +1,13 @@
 
+import Header from './Header';
+
 function Blog() {
+
   return (
     <div className="blog">
-      blog
+
+      <Header />
+
     </div>
   );
 }

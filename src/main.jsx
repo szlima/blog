@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import Blog from './Blog';
+import Blog from './components/Blog';
 
 import './styles/css/index.css';
 
