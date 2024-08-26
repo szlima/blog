@@ -144,6 +144,48 @@ body {
   }
 }
 
+.post--preview {
+  padding: 2rem;
+  border-top: thin solid var(--highlight-color--2);
+  border-bottom: thin solid var(--highlight-color--2);
+}
+.post--preview:first-of-type {
+  border-top: 0;
+}
+.post--preview:hover {
+  background-color: var(--secondary-color--2);
+  cursor: pointer;
+}
+.post--preview .preview-wrapper {
+  display: flex;
+  gap: 2rem;
+}
+.post--preview .preview-wrapper__text {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.post__title {
+  padding-bottom: 1rem;
+  color: var(--main-color);
+  text-transform: capitalize;
+  letter-spacing: 2px;
+}
+.post__content::first-letter {
+  text-transform: uppercase;
+}
+.post__author {
+  width: fit-content;
+  padding: 0.5rem;
+  color: var(--secondary-color--1);
+  background-color: var(--main-color);
+  font-size: 0.9rem;
+}
+.post__author::before {
+  content: "Posted by ";
+}
+
 .aside {
   flex: 1;
 }

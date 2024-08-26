@@ -150,6 +150,65 @@ body{
     }
 }
 
+.post{
+
+    &--preview{
+        padding: 2rem;
+        border-top: thin solid var(--highlight-color--2);
+        border-bottom: thin solid var(--highlight-color--2);
+
+        &:first-of-type{
+            border-top: 0;
+        }
+
+        &:hover{
+            background-color: var(--secondary-color--2);
+            cursor: pointer;
+        }
+
+        .preview-wrapper{
+            display: flex;
+            gap: 2rem;
+
+            &__text{
+                margin-top: 1rem;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        }
+    }
+
+    &__title{
+        padding-bottom: 1rem;
+        color: var(--main-color);
+
+        text-transform: capitalize;
+        letter-spacing: 2px;
+    }
+
+    &__content{
+        &::first-letter{
+            text-transform: uppercase;
+        }
+    }
+
+    &__author{
+        width: fit-content;
+        padding: .5rem;
+
+        color: var(--secondary-color--1);
+        background-color: var(--main-color);
+
+        font-size: .9rem;
+
+        &::before{
+            content: 'Posted by ';
+        }
+    }
+}
+
 .aside{
     flex: 1;
 }
