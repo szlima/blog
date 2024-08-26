@@ -8,6 +8,7 @@
   --default-color: #555;
   --main-font: sans-serif;
   --highlight-font: "WindSong", cursive;
+  --width-desktop-up: 1200px;
 }
 
 * {
@@ -18,7 +19,7 @@
 
 body {
   width: 100dvw;
-  height: 100dvh;
+  min-height: 100dvh;
   background-color: var(--secondary-color--2);
   color: var(--default-color);
   font-family: var(--main-font);
@@ -43,11 +44,9 @@ body {
 }
 @media only screen and (min-width: 1200px) {
   .blog {
+    max-width: var(--width-desktop-up);
+    margin: auto;
     padding: 0 2rem;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .blog {
     border: 1px solid var(--highlight-color--2);
     border-radius: 1rem;
   }
@@ -120,6 +119,33 @@ body {
   .navbar__list__item:first-child {
     display: none;
   }
+}
+
+.content-wrapper {
+  width: 100%;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media only screen and (min-width: 1200px) {
+  .content-wrapper {
+    flex-direction: row;
+  }
+}
+
+.posts {
+  flex: 2;
+}
+@media only screen and (min-width: 1200px) {
+  .posts {
+    padding-right: 2rem;
+    border-right: thin solid var(--highlight-color--2);
+  }
+}
+
+.aside {
+  flex: 1;
 }
 
 /*# sourceMappingURL=index.css.map */
