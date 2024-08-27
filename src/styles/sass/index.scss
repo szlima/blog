@@ -5,6 +5,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    transition: .7s;
 }
 
 body{
@@ -262,5 +263,77 @@ img{
         font-size: .8rem;
         text-align: center;
         letter-spacing: 1px;
+    }
+}
+
+.archive{
+    margin: 2rem 0;
+
+    &__heading{
+        color: var(--main-color);
+
+        font-family: var(--highlight-font);
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    &__subheading{
+        width: fit-content;
+        margin: 1rem auto;
+
+        font-size: .7rem;
+        letter-spacing: .5px;
+
+        position: relative;
+        &::before,
+        &::after{
+            width: 3rem;
+
+            content: '';
+            position: absolute;
+            bottom: 50%;
+
+            border-bottom: thin solid var(--highlight-color--2);
+        }
+
+        &::before{
+            left: -4rem;
+        }
+
+        &::after{
+            right: -4rem;
+        }
+    }
+
+    &__list{
+        width: 70%;
+        margin: 1rem auto;
+        list-style-type: none;
+    }
+
+    &__item{
+        margin-bottom: .5rem;
+        padding: .5rem;
+
+        background-color: var(--highlight-color--1);
+        border-radius: 1rem;
+
+        font-size: 1rem;
+        text-align: center;
+
+        &:hover{
+            background-color: var(--highlight-color--2);
+            cursor: pointer;
+        }
+
+        &--author{
+            margin-bottom: 0;
+            color: var(--secondary-color--1);
+            background-color: var(--main-color);
+
+            &:hover{
+                color: var(--default-color);
+            }
+        }
     }
 }

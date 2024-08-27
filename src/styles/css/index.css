@@ -15,6 +15,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  transition: 0.7s;
 }
 
 body {
@@ -239,6 +240,61 @@ img {
   font-size: 0.8rem;
   text-align: center;
   letter-spacing: 1px;
+}
+
+.archive {
+  margin: 2rem 0;
+}
+.archive__heading {
+  color: var(--main-color);
+  font-family: var(--highlight-font);
+  font-size: 2rem;
+  text-align: center;
+}
+.archive__subheading {
+  width: fit-content;
+  margin: 1rem auto;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+.archive__subheading::before, .archive__subheading::after {
+  width: 3rem;
+  content: "";
+  position: absolute;
+  bottom: 50%;
+  border-bottom: thin solid var(--highlight-color--2);
+}
+.archive__subheading::before {
+  left: -4rem;
+}
+.archive__subheading::after {
+  right: -4rem;
+}
+.archive__list {
+  width: 70%;
+  margin: 1rem auto;
+  list-style-type: none;
+}
+.archive__item {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--highlight-color--1);
+  border-radius: 1rem;
+  font-size: 1rem;
+  text-align: center;
+}
+.archive__item:hover {
+  background-color: var(--highlight-color--2);
+  cursor: pointer;
+}
+.archive__item--author {
+  margin-bottom: 0;
+  color: var(--secondary-color--1);
+  background-color: var(--main-color);
+}
+.archive__item--author:hover {
+  color: var(--default-color);
 }
 
 /*# sourceMappingURL=index.css.map */
