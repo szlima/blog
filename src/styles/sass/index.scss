@@ -6,6 +6,7 @@
     margin: 0;
     box-sizing: border-box;
     transition: .7s;
+    overflow-wrap: break-word;
 }
 
 body{
@@ -16,7 +17,7 @@ body{
     color: var(--default-color);
 
     font-family: var(--main-font);
-    font-size: 1.1rem;
+    font-size: 16px;
 
     @include mixins.for-desktop-up{
         padding: 2rem;
@@ -60,7 +61,11 @@ img{
 
     &__heading{
         font-family: var(--highlight-font);
-        font-size: 3.5rem;
+        font-size: 2.5rem;
+
+        @include mixins.for-tablet-portrait-up{
+            font-size: 3.5rem;
+        }
 
         @include mixins.for-desktop-up{
             font-size: 5rem;
@@ -268,6 +273,7 @@ img{
 
 .archive{
     margin: 2rem 0;
+    overflow: hidden;
 
     &__heading{
         color: var(--main-color);
