@@ -1,10 +1,10 @@
 
 function PostPreview({post}){
-    const {title, firstContent, image, author}= post;    
+    const {heading, firstContent, image, author}= post;
 
     return (
         <div className="post--preview">
-            <h2 className="post__title">{title}</h2>
+            <h2 className="post__heading">{heading}</h2>
             <div className="preview-wrapper">
                 <img className="post__image" src={image} alt='Post image'/>
                 <div className="preview-wrapper__text">

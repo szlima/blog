@@ -7,7 +7,7 @@ import Aside from './Aside';
 import PostPreview from './PostPreview';
 
 const post= {
-  title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  heading: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
   firstContent: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto.",
   author: "Leanne Graham",
   image: "https://picsum.photos/seed/picsum/300/200"
