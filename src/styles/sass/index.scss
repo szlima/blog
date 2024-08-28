@@ -151,13 +151,17 @@ img{
     }
 }
 
-.posts{
+.post-area{
     flex: 3;
 
     @include mixins.for-desktop-up{
         padding-right: 2rem;
         border-right: thin solid var(--highlight-color--2);
     }
+}
+
+.posts{
+    margin-bottom: 3rem;
 }
 
 .post{
@@ -239,6 +243,57 @@ img{
 
         &::before{
             content: 'Posted by ';
+        }
+    }
+}
+
+.pagination{
+
+    &__list{
+        display: flex;
+        justify-content: center;
+        gap: .5rem;
+
+        list-style: none;
+    }
+
+    &__option{
+        width: 2.5rem;
+        height: 2.5rem;
+
+        background-color: var(--secondary-color--2);
+        color: var(--main-color);
+        border-radius: 50%;
+        font-size: 1.1rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include mixins.for-desktop-up{
+            width: 2rem;
+            height: 2rem;
+
+            background-color: initial;
+            font-size: .9rem;
+        }
+
+        &:hover:not(&--disabled){
+            background-color: var(--highlight-color--1);
+            cursor: pointer;
+        }
+
+        &--selected{
+            color: var(--secondary-color--1);
+            background-color: var(--main-color);
+        }
+
+        &--disabled{
+            color: var(--secondary-color--1);
+
+            @include mixins.for-desktop-up{
+                color: var(--secondary-color--2);
+            }
         }
     }
 }

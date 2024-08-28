@@ -145,14 +145,18 @@ img {
   }
 }
 
-.posts {
+.post-area {
   flex: 3;
 }
 @media only screen and (min-width: 1200px) {
-  .posts {
+  .post-area {
     padding-right: 2rem;
     border-right: thin solid var(--highlight-color--2);
   }
+}
+
+.posts {
+  margin-bottom: 3rem;
 }
 
 .post--preview {
@@ -222,6 +226,48 @@ img {
 }
 .post__author::before {
   content: "Posted by ";
+}
+
+.pagination__list {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  list-style: none;
+}
+.pagination__option {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--secondary-color--2);
+  color: var(--main-color);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (min-width: 1200px) {
+  .pagination__option {
+    width: 2rem;
+    height: 2rem;
+    background-color: initial;
+    font-size: 0.9rem;
+  }
+}
+.pagination__option:hover:not(.pagination__option--disabled) {
+  background-color: var(--highlight-color--1);
+  cursor: pointer;
+}
+.pagination__option--selected {
+  color: var(--secondary-color--1);
+  background-color: var(--main-color);
+}
+.pagination__option--disabled {
+  color: var(--secondary-color--1);
+}
+@media only screen and (min-width: 1200px) {
+  .pagination__option--disabled {
+    color: var(--secondary-color--2);
+  }
 }
 
 .aside {

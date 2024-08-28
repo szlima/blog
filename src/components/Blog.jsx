@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 
 import Header from './Header';
 import Navbar from './Navbar';
+import PostArea from './PostArea';
 import Aside from './Aside';
-import PostPreview from './PostPreview';
 
 const post= {
   heading: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
@@ -27,11 +27,7 @@ function Blog() {
       <Navbar/>
 
       <div className="content-wrapper">
-        <div className="posts">
-          {
-            posts.map((post, id) => <PostPreview key={id} post={post}/>)
-          }
-        </div>
+        <PostArea posts={posts}/>
         <Aside />
       </div>
 
