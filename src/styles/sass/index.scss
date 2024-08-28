@@ -144,10 +144,11 @@ img{
 
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
 
     @include mixins.for-desktop-up{
         flex-direction: row;
+        gap: 2rem;
     }
 }
 
@@ -295,6 +296,23 @@ img{
                 color: var(--secondary-color--2);
             }
         }
+    }
+}
+
+.shortcut-home{
+    width: 70%;
+    margin: 1rem auto 0;
+    padding-top: 1rem;
+
+    color: var(--main-color);
+    border-top: thin solid var(--highlight-color--2);
+
+    font-weight: bold;
+    font-size: .9rem;
+    text-align: center;
+
+    &:hover{
+        cursor: pointer;
     }
 }
 
