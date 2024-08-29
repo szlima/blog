@@ -1,7 +1,9 @@
+import { useContext } from "react";
 
-const authors= ["Leanne Graham", "Ervin Howell", "Patricia Lebsack"];
+import {BlogContext} from '../contexts/BlogContext';
 
 function Archive(){
+    const {owner, authors}= useContext(BlogContext);
 
     return (
         <div className="archive">
@@ -10,7 +12,7 @@ function Archive(){
                 <li className="archive__item archive__item--author">mine</li>
                 <p className="archive__subheading">my friends' posts:</p>
                 {
-                    authors.map((author, id) => (author != "Clementine Bauch") &&
+                    authors.map((author, id) => (author != owner.name) &&
                         <li key={id} className="archive__item">{author}</li>)
                 }
             </ul>

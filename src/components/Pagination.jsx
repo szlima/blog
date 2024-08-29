@@ -1,9 +1,11 @@
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
 
-import { useEffect } from "react";
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
-function Pagination({currentPage, totalPages}){
+import { BlogContext } from "../contexts/BlogContext";
+
+function Pagination(){
+    const {totalPages, currentPage}= useContext(BlogContext);
     const [list, setList]= useState([]);
 
     const generateList= () => {

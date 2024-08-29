@@ -1,12 +1,16 @@
+import { useContext } from 'react';
 
 import PostPreview from './PostPreview';
 
-function Posts({list}){
+import { BlogContext } from '../contexts/BlogContext';
+
+function Posts(){
+    const {posts}= useContext(BlogContext);
 
     return (
         <div className="posts">
             {
-                list.map((post, id) => <PostPreview key={id} post={post}/>)
+                posts.map((post, id) => <PostPreview key={id} post={post}/>)
             }
         </div>
     );

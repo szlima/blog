@@ -1,11 +1,11 @@
 
 import PostList from './PostList';
 
-function PostArea({posts}){
+function PostArea(){
 
     return (
         <div className="post-area">
-            <PostList posts={posts}/>
+            <PostList />
             <p className="shortcut-home">home</p>
         </div>
     );
