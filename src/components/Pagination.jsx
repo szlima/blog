@@ -34,7 +34,7 @@ function Pagination(){
 
     useEffect(() => {
         setList(generateList());
-    }, []);
+    }, [totalPages]);
 
     return (
         <div className="pagination">

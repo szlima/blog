@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 
+import { getNumberPages } from "../utils/functions";
+
 const post= {
     heading: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
     firstContent: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto.",
@@ -17,7 +19,7 @@ const authors= ["Leanne Graham", "Ervin Howell", "Patricia Lebsack"];
 
 const blogName= owner.name,
     blogDescription= 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-    totalPages= 10, currentPage= 3;
+    currentPage= 3;
 
 const initialState= {
     blogName,
@@ -25,7 +27,7 @@ const initialState= {
     owner,
     authors,
     posts: [],
-    totalPages,
+    totalPages: 1,
     currentPage
 };
 
@@ -33,8 +35,13 @@ const BlogContext= createContext(initialState);
 
 function BlogProvider({children}){
     const [posts, setPosts]= useState([]);
+    const [totalPages, setTotalPages]= useState(1);
 
     useEffect(() => {
+        getNumberPages()
+            .then(data => setTotalPages(data))
+            .catch(() => console.error('Loading error: Number of pages unavailable.'));
+
         setPosts([post, post, post]);
     }, []);
 
