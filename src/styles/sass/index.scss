@@ -196,6 +196,12 @@ img{
                 flex-direction: row;
             }
 
+            .post__image{
+                @include mixins.for-desktop-up{
+                    flex: 1;
+                }
+            }
+
             &__text{
                 display: flex;
                 flex-direction: column;
@@ -204,6 +210,7 @@ img{
 
                 @include mixins.for-desktop-up{
                     margin-top: 1rem;
+                    flex: 2;
                 }
             }
         }

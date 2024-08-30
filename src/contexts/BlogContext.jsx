@@ -1,13 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 
-import { getNumberPages } from "../utils/functions";
-
-const post= {
-    heading: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-    firstContent: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto.",
-    author: "Leanne Graham",
-    image: "https://picsum.photos/seed/picsum/300/200"
-};
+import { getNumberPages, getPosts } from "../utils/functions";
 
 const owner= {
     name: 'Clementine Bauch',
@@ -18,8 +11,7 @@ const owner= {
 const authors= ["Leanne Graham", "Ervin Howell", "Patricia Lebsack"];
 
 const blogName= owner.name,
-    blogDescription= 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-    currentPage= 3;
+    blogDescription= 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.';
 
 const initialState= {
     blogName,
@@ -28,7 +20,7 @@ const initialState= {
     authors,
     posts: [],
     totalPages: 1,
-    currentPage
+    currentPage: 1
 };
 
 const BlogContext= createContext(initialState);
@@ -36,13 +28,17 @@ const BlogContext= createContext(initialState);
 function BlogProvider({children}){
     const [posts, setPosts]= useState([]);
     const [totalPages, setTotalPages]= useState(1);
+    const [currentPage, setCurrentPage]= useState(1);
 
     useEffect(() => {
         getNumberPages()
             .then(data => setTotalPages(data))
             .catch(() => console.error('Loading error: Number of pages unavailable.'));
 
-        setPosts([post, post, post]);
+        getPosts()
+            .then(data => setPosts(data))
+            .catch(() => console.error('Loading error: Post list unavailable.'));
+
     }, []);
 
     return (

@@ -188,6 +188,11 @@ img {
     flex-direction: row;
   }
 }
+@media only screen and (min-width: 1200px) {
+  .post--preview .preview-wrapper .post__image {
+    flex: 1;
+  }
+}
 .post--preview .preview-wrapper__text {
   display: flex;
   flex-direction: column;
@@ -197,6 +202,7 @@ img {
 @media only screen and (min-width: 1200px) {
   .post--preview .preview-wrapper__text {
     margin-top: 1rem;
+    flex: 2;
   }
 }
 .post__heading {
