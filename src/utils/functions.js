@@ -37,4 +37,21 @@ const getUser= async id => {
     return response.data;
 };
 
-export {getNumberPages, getPosts};
+const getBlogData= async () => {
+    const user= await getUser(3);
+    const ownerPhoto= 'https://picsum.photos/id/64/300?grayscale',
+        ownerDescription= 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod dolore illo amet, doloribus voluptas, fuga aspernatur sequi deleniti, error aliquid modi laboriosam facere et! Provident ad temporibus voluptas aspernatur in.',
+        blogDescription= 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.';
+
+    return {
+        owner: {
+            name: user.name,
+            photo: ownerPhoto,
+            description: ownerDescription
+        },
+        blogName: user.name,
+        blogDescription
+    };
+};
+
+export {getNumberPages, getPosts, getBlogData};

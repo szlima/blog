@@ -1,22 +1,13 @@
 import { createContext, useState, useEffect } from "react";
 
-import { getNumberPages, getPosts } from "../utils/functions";
-
-const owner= {
-    name: 'Clementine Bauch',
-    photo: 'https://picsum.photos/id/64/300?grayscale',
-    description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod dolore illo amet, doloribus voluptas, fuga aspernatur sequi deleniti, error aliquid modi laboriosam facere et! Provident ad temporibus voluptas aspernatur in.'   
-};
+import { getNumberPages, getPosts, getBlogData } from "../utils/functions";
 
 const authors= ["Leanne Graham", "Ervin Howell", "Patricia Lebsack"];
 
-const blogName= owner.name,
-    blogDescription= 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.';
-
 const initialState= {
-    blogName,
-    blogDescription,
-    owner,
+    blogName: '',
+    blogDescription: '',
+    owner: {},
     authors,
     posts: [],
     totalPages: 1,
@@ -27,6 +18,9 @@ const initialState= {
 const BlogContext= createContext(initialState);
 
 function BlogProvider({children}){
+    const [owner, setOwner]= useState({});
+    const [blogName, setBlogName]= useState('');
+    const [blogDescription, setBlogDescription]= useState('');
     const [posts, setPosts]= useState([]);
     const [totalPages, setTotalPages]= useState(1);
     const [currentPage, setCurrentPage]= useState(1);
@@ -43,6 +37,15 @@ function BlogProvider({children}){
             .then(data => setPosts(data))
             .catch(() =>
                 console.error('Loading error: Post list unavailable.')
+            );
+
+        getBlogData()
+            .then(data => {
+                setOwner(data.owner);
+                setBlogName(data.blogName);
+                setBlogDescription(data.blogDescription);
+            }).catch(() =>
+                console.error('Loading error: Blog data unavailable.')
             );
 
     }, []);
