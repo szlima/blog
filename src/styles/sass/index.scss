@@ -286,7 +286,7 @@ img{
             font-size: .9rem;
         }
 
-        &:hover:not(&--disabled){
+        &:hover:not(&--disabled, &--selected){
             background-color: var(--highlight-color--1);
             cursor: pointer;
         }
@@ -294,6 +294,10 @@ img{
         &--selected{
             color: var(--secondary-color--1);
             background-color: var(--main-color);
+
+            &:hover{
+                cursor: default;
+            }
         }
 
         &--disabled{

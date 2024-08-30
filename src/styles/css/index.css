@@ -260,13 +260,16 @@ img {
     font-size: 0.9rem;
   }
 }
-.pagination__option:hover:not(.pagination__option--disabled) {
+.pagination__option:hover:not(.pagination__option--disabled, .pagination__option--selected) {
   background-color: var(--highlight-color--1);
   cursor: pointer;
 }
 .pagination__option--selected {
   color: var(--secondary-color--1);
   background-color: var(--main-color);
+}
+.pagination__option--selected:hover {
+  cursor: default;
 }
 .pagination__option--disabled {
   color: var(--secondary-color--1);

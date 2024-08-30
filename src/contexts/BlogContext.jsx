@@ -20,7 +20,8 @@ const initialState= {
     authors,
     posts: [],
     totalPages: 1,
-    currentPage: 1
+    currentPage: 1,
+    changeCurrentPage: () => {}
 };
 
 const BlogContext= createContext(initialState);
@@ -31,20 +32,37 @@ function BlogProvider({children}){
     const [currentPage, setCurrentPage]= useState(1);
 
     useEffect(() => {
+
         getNumberPages()
             .then(data => setTotalPages(data))
-            .catch(() => console.error('Loading error: Number of pages unavailable.'));
+            .catch(() =>
+                console.error('Loading error: Number of pages unavailable.')
+            );
 
-        getPosts()
+        getPosts(currentPage)
             .then(data => setPosts(data))
-            .catch(() => console.error('Loading error: Post list unavailable.'));
+            .catch(() =>
+                console.error('Loading error: Post list unavailable.')
+            );
 
     }, []);
+
+    const changeCurrentPage= page => {
+
+        getPosts(page)
+            .then(data => {
+                setPosts(data);
+                setCurrentPage(page);
+            }).catch(() =>
+                console.error('Loading error: Post list unavailable.')
+            );
+    };
 
     return (
         <BlogContext.Provider value={{
             blogName, blogDescription, owner,
-            authors, posts, totalPages, currentPage
+            authors, posts, totalPages, currentPage,
+            changeCurrentPage
         }}>
             {children}
         </BlogContext.Provider>

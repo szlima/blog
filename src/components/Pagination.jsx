@@ -1,11 +1,11 @@
-import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
+import { PiArrowLineLeftBold, PiArrowLineRightBold } from "react-icons/pi";
 
 import { useContext, useState, useEffect } from "react";
 
 import { BlogContext } from "../contexts/BlogContext";
 
 function Pagination(){
-    const {totalPages, currentPage}= useContext(BlogContext);
+    const {totalPages, currentPage, changeCurrentPage}= useContext(BlogContext);
     const [list, setList]= useState([]);
 
     const generateList= () => {
@@ -34,26 +34,26 @@ function Pagination(){
 
     useEffect(() => {
         setList(generateList());
-    }, [totalPages]);
+    }, [totalPages, currentPage]);
 
     return (
         <div className="pagination">
             <ul className="pagination__list">
-                <li className={`pagination__option 
+                <li onClick={() => changeCurrentPage(1)} className={`pagination__option 
                     ${isFirstPage() && 'pagination__option--disabled'}`}>
-                    <IoIosArrowDropleftCircle />
+                    <PiArrowLineLeftBold />
                 </li>
                 {
                     list.map((page, id) =>
-                        <li key={id} className={`pagination__option 
+                        <li key={id} onClick={() => changeCurrentPage(page)} className={`pagination__option 
                             ${(page===currentPage) && 'pagination__option--selected'}`}>
                             {page}
                         </li>
                     )
                 }
-                <li className={`pagination__option 
+                <li onClick={() => changeCurrentPage(totalPages)} className={`pagination__option 
                     ${isLastPage() && 'pagination__option--disabled'}`}>
-                    <IoIosArrowDroprightCircle />
+                    <PiArrowLineRightBold />
                 </li>
             </ul>
         </div>
