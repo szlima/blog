@@ -32,30 +32,9 @@ function BlogProvider({children}){
 
     useEffect(() => {
 
-        getNumberPages()
-            .then(data => setTotalPages(data))
-            .catch(() =>
-                console.error('Loading error: Number of pages unavailable.')
-            );
-
-        getPosts(currentPage)
-            .then(data => setPosts(data))
-            .catch(() =>
-                console.error('Loading error: Post list unavailable.')
-            );
-
-        getBlogData()
-            .then(data => {
-                setOwner(data.owner);
-                setBlogName(data.blogName);
-                setBlogDescription(data.blogDescription);
-            }).catch(() =>
-                console.error('Loading error: Blog data unavailable.')
-            );
-
-        getUsers()
-            .then(data => setAuthors(data))
-            .catch(() => console.error('Loading error: Authors list unavailable.'));
+        loadBlogData();
+        loadPostList();
+        loadAuthorList();
 
     }, []);
 
@@ -68,6 +47,37 @@ function BlogProvider({children}){
             }).catch(() =>
                 console.error('Loading error: Post list unavailable.')
             );
+    };
+
+    const loadBlogData= () => {
+        getBlogData()
+            .then(data => {
+                setOwner(data.owner);
+                setBlogName(data.blogName);
+                setBlogDescription(data.blogDescription);
+            }).catch(() =>
+                console.error('Loading error: Blog data unavailable.')
+            );
+    };
+
+    const loadPostList= () => {
+        getNumberPages()
+            .then(data => setTotalPages(data))
+            .catch(() =>
+                console.error('Loading error: Number of pages unavailable.')
+            );
+
+        getPosts(currentPage)
+            .then(data => setPosts(data))
+            .catch(() =>
+                console.error('Loading error: Post list unavailable.')
+            );
+    };
+
+    const loadAuthorList= () => {
+        getUsers()
+            .then(data => setAuthors(data))
+            .catch(() => console.error('Loading error: Authors list unavailable.'));
     };
 
     return (
