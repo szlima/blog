@@ -45,7 +45,7 @@ const getBlogData= async () => {
 
     return {
         owner: {
-            name: user.name,
+            ...user,
             photo: ownerPhoto,
             description: ownerDescription
         },
@@ -54,4 +54,9 @@ const getBlogData= async () => {
     };
 };
 
-export {getNumberPages, getPosts, getBlogData};
+const getUsers= async () => {
+    const response= await api.get('users');
+    return response.data;
+};
+
+export {getNumberPages, getPosts, getBlogData, getUsers};

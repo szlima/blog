@@ -1,14 +1,16 @@
 import { createContext, useState, useEffect } from "react";
 
-import { getNumberPages, getPosts, getBlogData } from "../utils/functions";
+import {
+    getNumberPages, getPosts, getBlogData, getUsers
+} from "../utils/functions";
 
-const authors= ["Leanne Graham", "Ervin Howell", "Patricia Lebsack"];
+// ------------------------------------
 
 const initialState= {
     blogName: '',
     blogDescription: '',
     owner: {},
-    authors,
+    authors: [],
     posts: [],
     totalPages: 1,
     currentPage: 1,
@@ -17,8 +19,11 @@ const initialState= {
 
 const BlogContext= createContext(initialState);
 
+// ------------------------------------
+
 function BlogProvider({children}){
     const [owner, setOwner]= useState({});
+    const [authors, setAuthors]= useState([]);
     const [blogName, setBlogName]= useState('');
     const [blogDescription, setBlogDescription]= useState('');
     const [posts, setPosts]= useState([]);
@@ -47,6 +52,10 @@ function BlogProvider({children}){
             }).catch(() =>
                 console.error('Loading error: Blog data unavailable.')
             );
+
+        getUsers()
+            .then(data => setAuthors(data))
+            .catch(() => console.error('Loading error: Authors list unavailable.'));
 
     }, []);
 
