@@ -2,10 +2,10 @@ import { PiArrowLineLeftBold, PiArrowLineRightBold } from "react-icons/pi";
 
 import { useContext, useState, useEffect } from "react";
 
-import { BlogContext } from "../contexts/BlogContext";
+import { PostContext } from "../contexts/PostContext";
 
 function Pagination(){
-    const {totalPages, currentPage, changeCurrentPage}= useContext(BlogContext);
+    const {totalPages, currentPage, changeCurrentPage}= useContext(PostContext);
     const [list, setList]= useState([]);
 
     const generateList= () => {

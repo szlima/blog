@@ -4,12 +4,12 @@ import Navbar from './Navbar';
 import PostArea from './PostArea';
 import Aside from './Aside';
 
-import { BlogProvider } from '../contexts/BlogContext';
+import IndexProvider from '../contexts/IndexProvider';
 
 function Blog() {
 
   return (
-    <BlogProvider>
+    <IndexProvider>
       <div className="blog">
 
         <Header />
@@ -21,7 +21,7 @@ function Blog() {
         </div>
 
       </div>
-    </BlogProvider>
+    </IndexProvider>
   );
 }
 

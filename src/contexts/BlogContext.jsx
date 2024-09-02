@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 
 import {
-    getNumberPages, getPosts, getBlogData, getUsers
+    getBlogData, getUsers
 } from "../utils/functions";
 
 // ------------------------------------
@@ -10,11 +10,7 @@ const initialState= {
     blogName: '',
     blogDescription: '',
     owner: {},
-    authors: [],
-    posts: [],
-    totalPages: 1,
-    currentPage: 1,
-    changeCurrentPage: () => {}
+    authors: []
 };
 
 const BlogContext= createContext(initialState);
@@ -22,55 +18,24 @@ const BlogContext= createContext(initialState);
 // ------------------------------------
 
 function BlogProvider({children}){
-    const [owner, setOwner]= useState({});
-    const [authors, setAuthors]= useState([]);
     const [blogName, setBlogName]= useState('');
     const [blogDescription, setBlogDescription]= useState('');
-    const [posts, setPosts]= useState([]);
-    const [totalPages, setTotalPages]= useState(1);
-    const [currentPage, setCurrentPage]= useState(1);
+    const [owner, setOwner]= useState({});
+    const [authors, setAuthors]= useState([]);
 
     useEffect(() => {
-
         loadBlogData();
-        loadPostList();
         loadAuthorList();
-
     }, []);
-
-    const changeCurrentPage= page => {
-
-        getPosts(page)
-            .then(data => {
-                setPosts(data);
-                setCurrentPage(page);
-            }).catch(() =>
-                console.error('Loading error: Post list unavailable.')
-            );
-    };
 
     const loadBlogData= () => {
         getBlogData()
             .then(data => {
-                setOwner(data.owner);
                 setBlogName(data.blogName);
                 setBlogDescription(data.blogDescription);
+                setOwner(data.owner);
             }).catch(() =>
                 console.error('Loading error: Blog data unavailable.')
-            );
-    };
-
-    const loadPostList= () => {
-        getNumberPages()
-            .then(data => setTotalPages(data))
-            .catch(() =>
-                console.error('Loading error: Number of pages unavailable.')
-            );
-
-        getPosts(currentPage)
-            .then(data => setPosts(data))
-            .catch(() =>
-                console.error('Loading error: Post list unavailable.')
             );
     };
 
@@ -82,9 +47,7 @@ function BlogProvider({children}){
 
     return (
         <BlogContext.Provider value={{
-            blogName, blogDescription, owner,
-            authors, posts, totalPages, currentPage,
-            changeCurrentPage
+            blogName, blogDescription, owner, authors
         }}>
             {children}
         </BlogContext.Provider>
