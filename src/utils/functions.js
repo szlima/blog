@@ -7,15 +7,15 @@ const api= axios.create({
     timeout: 5000
 });
 
-const getNumberPages= async () => {
-    const response= await api.get('posts');
+const getNumberPages= async author => {
+    const response= await api.get(`posts${author? `?userId=${author.id}` : ''}`);
     const numberOfPosts= response.data.length;
 
     return Math.ceil(numberOfPosts/postsPerPage);
 };
 
-const getPosts= async page => {
-    const response= await api.get(`posts?_limit=${postsPerPage}&_page=${page}`);
+const getPosts= async (page, author) => {
+    const response= await api.get(`posts?${author? `userId=${author.id}&` : ''}_limit=${postsPerPage}&_page=${page}`);
 
     const list= response.data.map(async post => {
         const image= 'https://picsum.photos/300/200';
@@ -30,6 +30,16 @@ const getPosts= async page => {
     });
 
     return Promise.all(list);
+};
+
+const getInitialPostsInfo= async author => {
+    const newCurrentPage= 1;
+    const [newTotalPages, newPosts]= await Promise.all([
+        getNumberPages(author),
+        getPosts(newCurrentPage, author)
+    ]);
+
+    return {newCurrentPage, newTotalPages, newPosts};
 };
 
 const getUser= async id => {
@@ -59,4 +69,4 @@ const getUsers= async () => {
     return response.data;
 };
 
-export {getNumberPages, getPosts, getBlogData, getUsers};
+export {getPosts, getInitialPostsInfo, getBlogData, getUsers};

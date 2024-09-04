@@ -155,6 +155,24 @@ img {
     border-right: thin solid var(--highlight-color--2);
   }
 }
+.post-area__subheading {
+  padding: 0.5rem 1rem;
+  border-width: 2px 0;
+  border-style: solid;
+  border-color: var(--main-color);
+  color: var(--main-color);
+  font-size: 1rem;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 2px;
+}
+@media only screen and (min-width: 1200px) {
+  .post-area__subheading {
+    border: 0;
+    color: var(--highlight-color--2);
+    background-color: var(--main-color);
+  }
+}
 
 .posts {
   margin-bottom: 3rem;
@@ -361,17 +379,15 @@ img {
   font-size: 1rem;
   text-align: center;
 }
-.archive__item:hover {
+.archive__item:not(.archive__item--selected):hover {
   background-color: var(--highlight-color--2);
   cursor: pointer;
 }
-.archive__item--author {
-  margin-bottom: 0;
-  color: var(--secondary-color--1);
-  background-color: var(--main-color);
-}
-.archive__item--author:hover {
-  color: var(--default-color);
+.archive__item--selected {
+  color: var(--main-color);
+  background-color: var(--highlight-color--2);
+  border: thin solid var(--main-color);
+  cursor: default;
 }
 
 /*# sourceMappingURL=index.css.map */

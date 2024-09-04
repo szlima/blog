@@ -159,6 +159,27 @@ img{
         padding-right: 2rem;
         border-right: thin solid var(--highlight-color--2);
     }
+
+    &__subheading{
+        padding: .5rem 1rem;
+
+        border-width: 2px 0;
+        border-style: solid;
+        border-color: var(--main-color);
+
+        color: var(--main-color);
+
+        font-size: 1rem;
+        font-weight: normal;
+        text-align: center;
+        letter-spacing: 2px;
+
+        @include mixins.for-desktop-up{
+            border: 0;
+            color: var(--highlight-color--2);
+            background-color: var(--main-color);
+        }
+    }
 }
 
 .posts{
@@ -411,19 +432,16 @@ img{
         font-size: 1rem;
         text-align: center;
 
-        &:hover{
+        &:not(&--selected):hover{
             background-color: var(--highlight-color--2);
             cursor: pointer;
         }
 
-        &--author{
-            margin-bottom: 0;
-            color: var(--secondary-color--1);
-            background-color: var(--main-color);
-
-            &:hover{
-                color: var(--default-color);
-            }
+        &--selected{
+            color: var(--main-color);
+            background-color: var(--highlight-color--2);
+            border: thin solid var(--main-color);
+            cursor: default;
         }
     }
 }
