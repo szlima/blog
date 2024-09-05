@@ -22,10 +22,13 @@ function Archive(){
                 <li onClick={() => changeCurrentAuthor(owner)} className={getStyleArquiveItem(owner)}>mine</li>
                 <p className="archive__subheading">my friends' posts:</p>
                 {
-                    authors.map((author, id) => (author.name != owner.name) &&
-                        <li key={id} onClick={() => changeCurrentAuthor(author)} className={getStyleArquiveItem(author)}>
-                            {author.name}
-                        </li>)
+                    authors
+                        .filter(author => (author.id != owner.id))
+                        .map((friend, id) => (
+                            <li key={id} onClick={() => changeCurrentAuthor(friend)} className={getStyleArquiveItem(friend)}>
+                                {friend.name}
+                            </li>
+                        ))
                 }
             </ul>
         </div>
