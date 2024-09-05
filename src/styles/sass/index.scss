@@ -449,3 +449,16 @@ img{
         }
     }
 }
+
+.footer{
+    padding: 1rem;
+
+    text-align: center;
+    font-size: .5rem;
+    letter-spacing: .1rem;
+
+    &__dev{
+        color: var(--main-color);
+        text-decoration: none;
+    }
+}

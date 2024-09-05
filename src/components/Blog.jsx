@@ -3,6 +3,7 @@ import Header from './Header';
 import Navbar from './Navbar';
 import PostArea from './PostArea';
 import Aside from './Aside';
+import Footer from './Footer';
 
 import IndexProvider from '../contexts/IndexProvider';
 
@@ -19,6 +20,8 @@ function Blog() {
           <PostArea />
           <Aside />
         </div>
+
+        <Footer />
 
       </div>
     </IndexProvider>
