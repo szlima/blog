@@ -233,6 +233,9 @@ img {
   width: 100%;
   margin: auto;
 }
+.post__image--not-found {
+  display: none;
+}
 .post__content::first-letter {
   text-transform: uppercase;
 }

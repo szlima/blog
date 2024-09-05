@@ -18,7 +18,7 @@ const getPosts= async (page, author) => {
     const response= await api.get(`posts?${author? `userId=${author.id}&` : ''}_limit=${postsPerPage}&_page=${page}`);
 
     const list= response.data.map(async post => {
-        const image= 'https://picsum.photos/300/200';
+        const image= `https://picsum.photos/id/${post.id+70}/300/200`;
         const user= await getUser(post.userId);
 
         return {
