@@ -140,7 +140,7 @@ img {
   }
 }
 
-.content-wrapper {
+.main {
   width: 100%;
   padding: 2rem 0;
   display: flex;
@@ -148,7 +148,7 @@ img {
   gap: 3rem;
 }
 @media only screen and (min-width: 1200px) {
-  .content-wrapper {
+  .main {
     flex-direction: row;
     gap: 2rem;
   }
@@ -317,14 +317,14 @@ img {
   width: 70%;
   margin: 1rem auto 0;
   padding-top: 1rem;
-  color: var(--main-color);
   border-top: thin solid var(--highlight-color--2);
   font-weight: bold;
   font-size: 0.9rem;
   text-align: center;
 }
-.shortcut-home:hover {
-  cursor: pointer;
+.shortcut-home__link {
+  color: var(--main-color);
+  text-decoration: none;
 }
 
 .aside {

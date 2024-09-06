@@ -1,5 +1,6 @@
 
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import { PostContext } from '../contexts/PostContext';
 
@@ -15,7 +16,9 @@ function PostArea(){
                 (posts.length > 0) ?
                     <>
                         <PostList />
-                        <p className='shortcut-home'>home</p>
+                        <p className='shortcut-home'>
+                            <Link to='/' className='shortcut-home__link'>home</Link>
+                        </p>
                     </>
                 :
                     <p className='post-area__no-posts'>There are no publications.</p>
