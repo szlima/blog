@@ -6,6 +6,7 @@
   --highlight-color--2: #f3e3f3;
   --main-color: #5d598f;
   --default-color: #555;
+  --unavailable-color: #eee;
   --main-font: sans-serif;
   --highlight-font: "WindSong", cursive;
   --width-desktop-up: 1200px;
@@ -40,6 +41,13 @@ body {
 
 img {
   max-width: 600px;
+}
+
+.unavailable {
+  background-color: var(--unavailable-color);
+}
+.unavailable > :nth-child(n) {
+  visibility: hidden;
 }
 
 .blog {
@@ -172,6 +180,10 @@ img {
     color: var(--highlight-color--2);
     background-color: var(--main-color);
   }
+}
+.post-area__no-posts {
+  margin: 2rem;
+  text-align: center;
 }
 
 .posts {

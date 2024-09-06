@@ -1,14 +1,18 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import { BlogContext } from "../contexts/BlogContext";
+import {getUnavailabilityClass} from '../utils/dataFunctions';
+
+import { BlogContext } from '../contexts/BlogContext';
 
 function Profile(){
     const {owner}= useContext(BlogContext);
 
+    const unavailabilityClass= getUnavailabilityClass([owner]);
+
     return (
-        <aside className="profile">
-            <img className="profile__photo" src={owner.photo} alt="Profile photo"/>
-            <p className="profile__description">{owner.description}</p>
+        <aside className={`profile ${unavailabilityClass}`}>
+            <img className='profile__photo' src={owner.photo} alt='Profile photo'/>
+            <p className='profile__description'>{owner.description}</p>
         </aside>
     );
 }
