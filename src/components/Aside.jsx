@@ -5,7 +5,7 @@ import Archive from './Archive';
 function Aside(){
 
     return (
-        <aside className="aside">
+        <aside className='aside'>
             <Profile />
             <Archive />
         </aside>

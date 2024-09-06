@@ -11,12 +11,12 @@ function Blog() {
 
   return (
     <IndexProvider>
-      <div className="blog">
+      <div className='blog'>
 
         <Header />
         <Navbar />
 
-        <div className="content-wrapper">
+        <div className='content-wrapper'>
           <PostArea />
           <Aside />
         </div>

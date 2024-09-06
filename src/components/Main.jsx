@@ -5,7 +5,7 @@ import Aside from './Aside';
 function Main(){
 
     return (
-        <main className="main">
+        <main className='main'>
             <PostArea />
             <Aside />
         </main>

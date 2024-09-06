@@ -1,8 +1,8 @@
-import { PiArrowLineLeftBold, PiArrowLineRightBold } from "react-icons/pi";
+import { PiArrowLineLeftBold, PiArrowLineRightBold } from 'react-icons/pi';
 
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from 'react';
 
-import { PostContext } from "../contexts/PostContext";
+import { PostContext } from '../contexts/PostContext';
 
 function Pagination(){
     const {totalPages, currentPage, changeCurrentPage}= useContext(PostContext);
@@ -37,8 +37,8 @@ function Pagination(){
     }, [totalPages, currentPage]);
 
     return (
-        <div className="pagination">
-            <ul className="pagination__list">
+        <div className='pagination'>
+            <ul className='pagination__list'>
                 <li onClick={() => changeCurrentPage(1)} className={`pagination__option 
                     ${isFirstPage() && 'pagination__option--disabled'}`}>
                     <PiArrowLineLeftBold />

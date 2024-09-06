@@ -1,8 +1,8 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from 'react';
 
 import {
     getBlogData, getUsers
-} from "../utils/functions";
+} from '../utils/apiFunctions';
 
 // ------------------------------------
 

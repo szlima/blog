@@ -1,8 +1,8 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from 'react';
 
 import {
     getPosts, getInitialPostsInfo
-} from "../utils/functions";
+} from '../utils/apiFunctions';
 
 const initialState= {
     posts: [],

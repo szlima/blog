@@ -8,7 +8,7 @@ function Posts(){
     const {posts}= useContext(PostContext);
 
     return (
-        <div className="posts">
+        <div className='posts'>
             {
                 posts.map((post, id) => <PostPreview key={id} post={post}/>)
             }
