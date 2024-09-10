@@ -5,7 +5,7 @@ import { useContext, useState, useEffect } from 'react';
 import { PostContext } from '../contexts/PostContext';
 
 function Pagination(){
-    const {totalPages, currentPage, changeCurrentPage}= useContext(PostContext);
+    const {totalPages, currentPage, currentAuthor, loadPostList}= useContext(PostContext);
     const [list, setList]= useState([]);
 
     const generateList= () => {
@@ -32,6 +32,8 @@ function Pagination(){
 
     const isLastPage= () => currentPage === totalPages;
 
+    const handleChangePage= page => loadPostList(page, currentAuthor);
+
     useEffect(() => {
         setList(generateList());
     }, [totalPages, currentPage]);
@@ -39,19 +41,19 @@ function Pagination(){
     return (
         <div className='pagination'>
             <ul className='pagination__list'>
-                <li onClick={() => changeCurrentPage(1)} className={`pagination__option 
+                <li onClick={() => handleChangePage(1)} className={`pagination__option 
                     ${isFirstPage() && 'pagination__option--disabled'}`}>
                     <PiArrowLineLeftBold />
                 </li>
                 {
                     list.map((page, id) =>
-                        <li key={id} onClick={() => changeCurrentPage(page)} className={`pagination__option 
+                        <li key={id} onClick={() => handleChangePage(page)} className={`pagination__option 
                             ${(page===currentPage) && 'pagination__option--selected'}`}>
                             {page}
                         </li>
                     )
                 }
-                <li onClick={() => changeCurrentPage(totalPages)} className={`pagination__option 
+                <li onClick={() => handleChangePage(totalPages)} className={`pagination__option 
                     ${isLastPage() && 'pagination__option--disabled'}`}>
                     <PiArrowLineRightBold />
                 </li>

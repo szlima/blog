@@ -1,16 +1,13 @@
 import { createContext, useState, useEffect } from 'react';
 
-import {
-    getPosts, getInitialPostsInfo
-} from '../utils/apiFunctions';
+import { getPostListInfo } from '../utils/apiFunctions';
 
 const initialState= {
     posts: [],
     totalPages: 1,
     currentPage: 1,
     currentAuthor: undefined,
-    changeCurrentPage: () => {},
-    changeCurrentAuthor: () => {}
+    loadPostList: () => {}
 };
 
 const PostContext= createContext(initialState);
@@ -25,38 +22,23 @@ function PostProvider({children}){
         loadPostList();
     }, []);
 
-    const changeCurrentPage= page => {
+    const loadPostList= (page=1, author) => {
 
-        getPosts(page, currentAuthor)
-            .then(data => {
-                setPosts(data);
-                setCurrentPage(page);
-            }).catch(() =>
-                console.error('Loading error: Post list unavailable.')
-            );
-    };
-
-    const changeCurrentAuthor= author => {
-        setCurrentAuthor(author);
-        loadPostList(author);
-    };
-
-    const loadPostList= author => {
-
-        getInitialPostsInfo(author)
-            .then(({newCurrentPage, newTotalPages, newPosts}) => {
-                setCurrentPage(newCurrentPage);
+        getPostListInfo(page, author)
+            .then(({newTotalPages, newPosts}) => {
                 setTotalPages(newTotalPages);
                 setPosts(newPosts);
-
             }).catch(() =>
                 console.error('Loading error: Post list unavailable.')
-            );
+            ).finally(() => {
+                setCurrentPage(page);
+                setCurrentAuthor(author);
+            });
     };
 
     return <PostContext.Provider value={{
         posts, totalPages, currentPage, currentAuthor,
-        changeCurrentPage, changeCurrentAuthor
+        loadPostList
     }}>
         {children}
     </PostContext.Provider>

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const postsPerPage= 5;
 
@@ -32,14 +32,13 @@ const getPosts= async (page, author) => {
     return Promise.all(list);
 };
 
-const getInitialPostsInfo= async author => {
-    const newCurrentPage= 1;
+const getPostListInfo= async (page, author) => {
     const [newTotalPages, newPosts]= await Promise.all([
         getNumberPages(author),
-        getPosts(newCurrentPage, author)
+        getPosts(page, author)
     ]);
 
-    return {newCurrentPage, newTotalPages, newPosts};
+    return {newTotalPages, newPosts};
 };
 
 const getUser= async id => {
@@ -69,4 +68,4 @@ const getUsers= async () => {
     return response.data;
 };
 
-export {getPosts, getInitialPostsInfo, getBlogData, getUsers};
+export {getPostListInfo, getBlogData, getUsers};

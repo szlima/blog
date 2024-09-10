@@ -7,7 +7,7 @@ import {PostContext} from '../contexts/PostContext';
 
 function Archive(){
     const {owner, authors}= useContext(BlogContext);
-    const {currentAuthor, changeCurrentAuthor}= useContext(PostContext);
+    const {currentAuthor, loadPostList}= useContext(PostContext);
 
     const unavailabilityClass= getUnavailabilityClass([owner, authors]);
 
@@ -19,17 +19,19 @@ function Archive(){
         }`
     );
 
+    const handleChangeAuthor= author => loadPostList(1, author);
+
     return (
         <div className={`archive ${unavailabilityClass}`}>
             <h3 className='archive__heading'>Archive</h3>
             <ul className='archive__list'>
-                <li onClick={() => changeCurrentAuthor(owner)} className={getStyleArquiveItem(owner)}>mine</li>
+                <li onClick={() => handleChangeAuthor(owner)} className={getStyleArquiveItem(owner)}>mine</li>
                 <p className='archive__subheading'>my friends' posts:</p>
                 {
                     authors
                         .filter(author => (author.id != owner.id))
                         .map((friend, id) => (
-                            <li key={id} onClick={() => changeCurrentAuthor(friend)} className={getStyleArquiveItem(friend)}>
+                            <li key={id} onClick={() => handleChangeAuthor(friend)} className={getStyleArquiveItem(friend)}>
                                 {friend.name}
                             </li>
                         ))
