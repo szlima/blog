@@ -1,11 +1,12 @@
-import { PiArrowLineLeftBold, PiArrowLineRightBold } from 'react-icons/pi';
-
 import { useContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { PiArrowLineLeftBold, PiArrowLineRightBold } from 'react-icons/pi';
 
 import { PostContext } from '../contexts/PostContext';
 
 function Pagination(){
-    const {totalPages, currentPage, currentAuthor, loadPostList}= useContext(PostContext);
+    const navigate= useNavigate();
+    const {totalPages, currentPage, currentAuthor}= useContext(PostContext);
     const [list, setList]= useState([]);
 
     const generateList= () => {
@@ -28,11 +29,13 @@ function Pagination(){
         return aux;
     };
 
-    const isFirstPage= () => currentPage === 1;
+    const isCurrentPage= page => page == currentPage;
 
-    const isLastPage= () => currentPage === totalPages;
+    const isFirstPage= () => currentPage == 1;
 
-    const handleChangePage= page => loadPostList(page, currentAuthor);
+    const isLastPage= () => currentPage == totalPages;
+
+    const handleChangePage= page => navigate(`/${page}`);
 
     useEffect(() => {
         setList(generateList());
@@ -48,7 +51,7 @@ function Pagination(){
                 {
                     list.map((page, id) =>
                         <li key={id} onClick={() => handleChangePage(page)} className={`pagination__option 
-                            ${(page===currentPage) && 'pagination__option--selected'}`}>
+                            ${isCurrentPage(page) && 'pagination__option--selected'}`}>
                             {page}
                         </li>
                     )

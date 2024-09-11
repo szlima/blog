@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState } from 'react';
 
 import { getPostListInfo } from '../utils/apiFunctions';
 
@@ -17,10 +17,6 @@ function PostProvider({children}){
     const [totalPages, setTotalPages]= useState(1);
     const [currentPage, setCurrentPage]= useState(1);
     const [currentAuthor, setCurrentAuthor]= useState(undefined);
-
-    useEffect(() => {
-        loadPostList();
-    }, []);
 
     const loadPostList= (page=1, author) => {
 
