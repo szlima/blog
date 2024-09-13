@@ -163,7 +163,12 @@ img {
     border-right: thin solid var(--highlight-color--2);
   }
 }
-.post-area__subheading {
+
+.post-list--empty {
+  margin: 2rem;
+  text-align: center;
+}
+.post-list__heading {
   padding: 0.5rem 1rem;
   border-width: 2px 0;
   border-style: solid;
@@ -175,15 +180,11 @@ img {
   letter-spacing: 2px;
 }
 @media only screen and (min-width: 1200px) {
-  .post-area__subheading {
+  .post-list__heading {
     border: 0;
     color: var(--highlight-color--2);
     background-color: var(--main-color);
   }
-}
-.post-area__no-posts {
-  margin: 2rem;
-  text-align: center;
 }
 
 .posts {

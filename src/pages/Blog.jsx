@@ -1,7 +1,7 @@
-import { Outlet } from 'react-router-dom';
 
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
+import Main from '../components/Main';
 import Footer from '../components/Footer';
 
 import IndexProvider from '../contexts/IndexProvider';
@@ -14,11 +14,7 @@ function Blog() {
 
         <Header />
         <Navbar />
-
-        <main className='main'>
-          <Outlet />
-        </main>
-
+        <Main />
         <Footer />
 
       </div>

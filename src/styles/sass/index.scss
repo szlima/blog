@@ -167,8 +167,15 @@ img{
         padding-right: 2rem;
         border-right: thin solid var(--highlight-color--2);
     }
+}
 
-    &__subheading{
+.post-list{
+    &--empty{
+        margin: 2rem;
+        text-align: center;
+    }
+
+    &__heading{
         padding: .5rem 1rem;
 
         border-width: 2px 0;
@@ -187,11 +194,6 @@ img{
             color: var(--highlight-color--2);
             background-color: var(--main-color);
         }
-    }
-
-    &__no-posts{
-        margin: 2rem;
-        text-align: center;
     }
 }
 
