@@ -7,6 +7,8 @@ const api= axios.create({
     timeout: 5000
 });
 
+// ---------- ----------
+
 const getNumberPages= async author => {
     const response= await api.get(`posts${author? `?userId=${author.id}` : ''}`);
     const numberOfPosts= response.data.length;
@@ -32,6 +34,18 @@ const getPosts= async (page, author) => {
     return Promise.all(list);
 };
 
+const getUsers= async () => {
+    const response= await api.get('users');
+    return response.data;
+};
+
+const getUser= async id => {
+    const response= await api.get(`users/${id}`);
+    return response.data;
+};
+
+// ---------- ----------
+
 const getPostListInfo= async (page, author) => {
     const [newTotalPages, newPosts]= await Promise.all([
         getNumberPages(author),
@@ -41,31 +55,25 @@ const getPostListInfo= async (page, author) => {
     return {newTotalPages, newPosts};
 };
 
-const getUser= async id => {
-    const response= await api.get(`users/${id}`);
-    return response.data;
-};
-
 const getBlogData= async () => {
-    const user= await getUser(3);
+    const ownerData= await getUser(3);
+    const authorsData= await getUsers();
     const ownerPhoto= 'https://picsum.photos/id/64/300?grayscale',
         ownerDescription= 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod dolore illo amet, doloribus voluptas, fuga aspernatur sequi deleniti, error aliquid modi laboriosam facere et! Provident ad temporibus voluptas aspernatur in.',
         blogDescription= 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.';
 
     return {
         owner: {
-            ...user,
+            ...ownerData,
             photo: ownerPhoto,
             description: ownerDescription
         },
-        blogName: user.name,
-        blogDescription
+        blogName: ownerData.name,
+        blogDescription,
+        authors: authorsData
     };
 };
 
-const getUsers= async () => {
-    const response= await api.get('users');
-    return response.data;
-};
+// ---------- ----------
 
-export {getPostListInfo, getBlogData, getUsers};
+export {getPostListInfo, getBlogData};

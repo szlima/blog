@@ -1,12 +1,16 @@
 import { createContext, useState, useEffect } from 'react';
 
-import {
-    getBlogData, getUsers
-} from '../utils/apiFunctions';
+import { getBlogData } from '../utils/apiFunctions';
 
 // ------------------------------------
+const STATUS= {
+    loading: 'loading',
+    unavailable: 'unavailable',
+    completed: ''
+};
 
 const initialState= {
+    incompleteStatus: STATUS.loading,
     blogName: '',
     blogDescription: '',
     owner: {},
@@ -18,6 +22,7 @@ const BlogContext= createContext(initialState);
 // ------------------------------------
 
 function BlogProvider({children}){
+    const [incompleteStatus, setIncompleteStatus]= useState(STATUS.loading);
     const [blogName, setBlogName]= useState('');
     const [blogDescription, setBlogDescription]= useState('');
     const [owner, setOwner]= useState({});
@@ -25,7 +30,6 @@ function BlogProvider({children}){
 
     useEffect(() => {
         loadBlogData();
-        loadAuthorList();
     }, []);
 
     const loadBlogData= () => {
@@ -34,19 +38,17 @@ function BlogProvider({children}){
                 setBlogName(data.blogName);
                 setBlogDescription(data.blogDescription);
                 setOwner(data.owner);
-            }).catch(() =>
-                console.error('Loading error: Blog data unavailable.')
-            );
-    };
-
-    const loadAuthorList= () => {
-        getUsers()
-            .then(data => setAuthors(data))
-            .catch(() => console.error('Loading error: Authors list unavailable.'));
+                setAuthors(data.authors);
+                setIncompleteStatus(STATUS.completed);
+            }).catch(() => {
+                console.error('Loading error: Blog data unavailable.');
+                setIncompleteStatus(STATUS.unavailable);
+            });
     };
 
     return (
         <BlogContext.Provider value={{
+            incompleteStatus,
             blogName, blogDescription, owner, authors
         }}>
             {children}
@@ -54,4 +56,4 @@ function BlogProvider({children}){
     );
 }
 
-export {BlogContext, BlogProvider};
+export {BlogContext, BlogProvider, STATUS};

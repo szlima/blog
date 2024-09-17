@@ -57,6 +57,41 @@ img{
         border: 1px solid var(--highlight-color--2);
         border-radius: 1rem;
     }
+
+    &--loading,
+    &--unavailable{
+        height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 1.3rem;
+
+        @include mixins.for-desktop-up{
+            height: 70vh;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        & > :first-child{
+            font-size: 2rem;
+        }
+    }
+
+    &--loading{
+        & > :nth-child(n){
+            animation: loading 1s linear infinite;
+        }
+    }
+
+    &--unavailable{
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
 
 .header{
@@ -475,5 +510,13 @@ img{
     &__dev{
         color: var(--main-color);
         text-decoration: none;
+    }
+}
+
+@keyframes loading{
+    from{
+        transform: rotate(0);
+    }to{
+        transform: rotate(360deg);
     }
 }
