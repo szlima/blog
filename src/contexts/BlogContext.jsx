@@ -1,16 +1,12 @@
 import { createContext, useState, useEffect } from 'react';
 
 import { getBlogData } from '../utils/apiFunctions';
+import { STATUS } from '../utils/dataInfo';
 
 // ------------------------------------
-const STATUS= {
-    loading: 'loading',
-    unavailable: 'unavailable',
-    completed: ''
-};
 
 const initialState= {
-    incompleteStatus: STATUS.loading,
+    blogDataStatus: STATUS.loading,
     blogName: '',
     blogDescription: '',
     owner: {},
@@ -22,7 +18,7 @@ const BlogContext= createContext(initialState);
 // ------------------------------------
 
 function BlogProvider({children}){
-    const [incompleteStatus, setIncompleteStatus]= useState(STATUS.loading);
+    const [blogDataStatus, setBlogDataStatus]= useState(STATUS.loading);
     const [blogName, setBlogName]= useState('');
     const [blogDescription, setBlogDescription]= useState('');
     const [owner, setOwner]= useState({});
@@ -39,16 +35,16 @@ function BlogProvider({children}){
                 setBlogDescription(data.blogDescription);
                 setOwner(data.owner);
                 setAuthors(data.authors);
-                setIncompleteStatus(STATUS.completed);
+                setBlogDataStatus(STATUS.completed);
             }).catch(() => {
                 console.error('Loading error: Blog data unavailable.');
-                setIncompleteStatus(STATUS.unavailable);
+                setBlogDataStatus(STATUS.unavailable);
             });
     };
 
     return (
         <BlogContext.Provider value={{
-            incompleteStatus,
+            blogDataStatus,
             blogName, blogDescription, owner, authors
         }}>
             {children}
