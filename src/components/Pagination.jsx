@@ -6,7 +6,7 @@ import { PostContext } from '../contexts/PostContext';
 
 function Pagination(){
     const navigate= useNavigate();
-    const {totalPages, currentPage, currentAuthor}= useContext(PostContext);
+    const {totalPages, currentPage}= useContext(PostContext);
     const [list, setList]= useState([]);
 
     const generateList= () => {
@@ -35,7 +35,10 @@ function Pagination(){
 
     const isLastPage= () => currentPage == totalPages;
 
-    const handleChangePage= page => navigate(`/${page}`);
+    const handleChangePage= page => {
+        if(!isCurrentPage(page))
+            navigate(`/${page}`);
+    };
 
     useEffect(() => {
         setList(generateList());
