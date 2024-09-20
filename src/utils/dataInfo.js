@@ -2,7 +2,8 @@
 const STATUS= {
     loading: 'loading',
     unavailable: 'unavailable',
-    completed: 'completed'
+    completed: 'completed',
+    notFound: 'not-found'
 };
 
 export {STATUS};

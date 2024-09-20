@@ -6,18 +6,13 @@ import { PostContext } from '../contexts/PostContext';
 import PostArea from '../components/PostArea';
 import Aside from '../components/Aside';
 
-import { parseInteger } from '../utils/dataFunctions';
-
 function Home(){
-    const params= useParams();
+    const {page}= useParams();
     const {loadPostList}= useContext(PostContext);
 
-    const getPage= () => parseInteger(params.page);
-
     useEffect(() => {
-        const page= getPage();
         loadPostList(page);
-    }, [params]);
+    }, [page]);
 
     return (
         <>

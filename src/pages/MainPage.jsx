@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { STATUS } from '../utils/dataInfo';
 
 import { BlogContext } from '../contexts/BlogContext';
+import { PostContext } from '../contexts/PostContext';
 
 import LoadingInfo from '../components/incompleteData/LoadingInfo';
 import UnavailableInfo from '../components/incompleteData/UnavailableInfo';
@@ -15,14 +17,24 @@ const blogComponents= {
 };
 
 function MainPage() {
+  const navigate= useNavigate();
   const {blogDataStatus}= useContext(BlogContext);
+  const {postListStatus}= useContext(PostContext);
   const [mainStatus, setMainStatus]= useState(STATUS.loading);
 
   useEffect(() => {
+
     const status= checkAllStatus();
     setMainStatus(status);
 
   }, [blogDataStatus]);
+
+  useEffect(() => {
+
+    if(postListStatus === STATUS.notFound)
+      navigate('/not-found');
+
+  }, [postListStatus]);
 
   const checkAllStatus= () => {
 

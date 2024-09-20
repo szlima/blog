@@ -7,7 +7,7 @@ const getUnavailabilityClass= data => {
         'unavailable' : '';
 };
 
-const parseInteger= number => number ? parseInt(number) : undefined;
+const parseNaturalNumber= number => (number > 0) ? parseInt(number) : undefined;
 
 
-export {getUnavailabilityClass, parseInteger};
+export {getUnavailabilityClass, parseNaturalNumber};

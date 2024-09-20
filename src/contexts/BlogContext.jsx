@@ -52,4 +52,4 @@ function BlogProvider({children}){
     );
 }
 
-export {BlogContext, BlogProvider, STATUS};
+export {BlogContext, BlogProvider};
