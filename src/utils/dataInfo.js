@@ -7,4 +7,9 @@ const STATUS= {
     notFound: 'not-found'
 };
 
-export {STATUS};
+const POST_LIST_TYPE= {
+    fullList: 'full-list',
+    listByAuthor: 'list-by-author'
+};
+
+export {STATUS, POST_LIST_TYPE};

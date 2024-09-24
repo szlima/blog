@@ -10,7 +10,8 @@ const initialState= {
     blogName: '',
     blogDescription: '',
     owner: {},
-    authors: []
+    authors: [],
+    getAuthor: () => {}
 };
 
 const BlogContext= createContext(initialState);
@@ -42,10 +43,13 @@ function BlogProvider({children}){
             });
     };
 
+    const getAuthor= authorId => authors.find(author => (author.id == authorId));
+
     return (
         <BlogContext.Provider value={{
             blogDataStatus,
-            blogName, blogDescription, owner, authors
+            blogName, blogDescription, owner, authors,
+            getAuthor
         }}>
             {children}
         </BlogContext.Provider>

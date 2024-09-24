@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {getUnavailabilityClass} from '../utils/dataFunctions';
 
@@ -6,20 +7,21 @@ import {BlogContext} from '../contexts/BlogContext';
 import {PostContext} from '../contexts/PostContext';
 
 function Archive(){
+    const navigate= useNavigate();
     const {owner, authors}= useContext(BlogContext);
-    const {currentAuthor, loadPostList}= useContext(PostContext);
+    const {currentAuthor}= useContext(PostContext);
 
     const unavailabilityClass= getUnavailabilityClass([owner, authors]);
 
     const getStyleArquiveItem= author => (
         `archive__item ${
-            (author === currentAuthor) ?
+            (author.id === currentAuthor?.id) ?
             'archive__item--selected' :
             ''
         }`
     );
 
-    const handleChangeAuthor= author => loadPostList(1, author);
+    const handleChangeAuthor= author => navigate(`/authors/${author.id}`);
 
     return (
         <div className={`archive ${unavailabilityClass}`}>

@@ -1,8 +1,12 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 import { getPostListInfo } from '../utils/apiFunctions';
 import { parseNaturalNumber } from '../utils/dataFunctions';
 import { STATUS } from '../utils/dataInfo';
+
+import { BlogContext } from './BlogContext';
+
+// ------------------------------------
 
 const initialState= {
     postListStatus: STATUS.standBy,
@@ -10,13 +14,17 @@ const initialState= {
     totalPages: 1,
     currentPage: 1,
     currentAuthor: undefined,
-    loadPostList: () => {},
+    loadFullPostList: () => {},
+    loadPostListByAuthor: () => {},
     resetPostContext: () => {}
 };
 
 const PostContext= createContext(initialState);
 
+// ------------------------------------
+
 function PostProvider({children}){
+    const {getAuthor}= useContext(BlogContext);
     const [postListStatus, setPostListStatus]= useState(STATUS.standBy);
     const [posts, setPosts]= useState([]);
     const [totalPages, setTotalPages]= useState(1);
@@ -46,11 +54,24 @@ function PostProvider({children}){
             });
     };
 
-    const loadPostList= (chosenPage=1, author) => {
+    const loadFullPostList= (chosenPage=1) => {
         setPostListStatus(STATUS.loading);
         const page= parseNaturalNumber(chosenPage);
 
         if(!page){
+            setPostListStatus(STATUS.notFound);
+            return;
+        }
+
+        changePostList(page);
+    };
+
+    const loadPostListByAuthor= (chosenPage=1, authorId) => {
+        setPostListStatus(STATUS.loading);
+        const page= parseNaturalNumber(chosenPage);
+        const author= getAuthor(authorId);
+
+        if(!page || !author){
             setPostListStatus(STATUS.notFound);
             return;
         }
@@ -73,7 +94,7 @@ function PostProvider({children}){
     return <PostContext.Provider value={{
         postListStatus,
         posts, totalPages, currentPage, currentAuthor,
-        loadPostList, resetPostContext
+        loadFullPostList, loadPostListByAuthor, resetPostContext
     }}>
         {children}
     </PostContext.Provider>

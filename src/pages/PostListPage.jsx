@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 
-import { STATUS } from '../utils/dataInfo';
+import { STATUS, POST_LIST_TYPE } from '../utils/dataInfo';
 
 import { PostContext } from '../contexts/PostContext';
 
@@ -10,7 +10,7 @@ import LoadingInfo from '../components/incompleteData/LoadingInfo';
 import PostArea from '../components/PostArea';
 import Aside from '../components/Aside';
 
-const homeComponents= {
+const postListComponents= {
     [STATUS.completed]: <>
         <PostArea />
         <Aside />
@@ -21,17 +21,24 @@ const homeComponents= {
     [STATUS.standBy]: <LoadingInfo />
 };
 
-function HomePage(){
-    const {page}= useParams();
-    const {loadPostList, postListStatus: status}= useContext(PostContext);
+function PostListPage({listType}){
+    const {page, authorId}= useParams();
+    const {
+        loadFullPostList, loadPostListByAuthor, postListStatus: status
+    }= useContext(PostContext);
+
+    const loadPostList= {
+        [POST_LIST_TYPE.fullList]: () => loadFullPostList(page),
+        [POST_LIST_TYPE.listByAuthor]: () => loadPostListByAuthor(page, authorId)
+    };
 
     useEffect(() => {
-        loadPostList(page);
-    }, [page]);
+        loadPostList[listType]();
+    }, [page, authorId]);
 
     return (
-        homeComponents[status]
+        postListComponents[status]
     );
 }
 
-export default HomePage;
+export default PostListPage;
