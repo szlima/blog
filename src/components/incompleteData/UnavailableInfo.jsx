@@ -1,12 +1,12 @@
 import { BiError } from 'react-icons/bi';
 
-function UnavailableInfo(){
+function UnavailableInfo({info}){
 
     return (
-        <>
-          <BiError />
-          <p>Blog data unavailable</p>
-        </>
+        <div className='unavailable-info'>
+          <BiError className='icon'/>
+          <p>{info} unavailable</p>
+        </div>
     );
 }
 

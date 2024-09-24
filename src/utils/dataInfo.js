@@ -1,5 +1,6 @@
 
 const STATUS= {
+    standBy: 'stand-by',
     loading: 'loading',
     unavailable: 'unavailable',
     completed: 'completed',

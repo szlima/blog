@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import IndexProvider from './contexts/IndexProvider';
 
 import MainPage from './pages/MainPage';
-import Home from './pages/Home';
+import HomePage from './pages/HomePage';
 import NoPage from './pages/NoPage';
 
 import './styles/css/index.css';
@@ -15,8 +15,8 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path='/' element={<MainPage />}>
 
-          <Route index element={<Home />}/>
-          <Route path='/:page' element={<Home />}/>
+          <Route index element={<HomePage />}/>
+          <Route path='/:page' element={<HomePage />}/>
           <Route path='/not-found' element={<NoPage />}/>
           <Route path='*' element={<Navigate to='/not-found' />}/>
 

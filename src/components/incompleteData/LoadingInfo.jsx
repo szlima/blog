@@ -3,7 +3,9 @@ import { AiOutlineLoading } from 'react-icons/ai';
 function LoadingInfo(){
 
     return (
-        <AiOutlineLoading />
+        <div className="loading-info">
+            <AiOutlineLoading className='icon'/>
+        </div>
     );
 }
 

@@ -5,18 +5,19 @@ import { parseNaturalNumber } from '../utils/dataFunctions';
 import { STATUS } from '../utils/dataInfo';
 
 const initialState= {
-    postListStatus: STATUS.loading,
+    postListStatus: STATUS.standBy,
     posts: [],
     totalPages: 1,
     currentPage: 1,
     currentAuthor: undefined,
-    loadPostList: () => {}
+    loadPostList: () => {},
+    resetPostContext: () => {}
 };
 
 const PostContext= createContext(initialState);
 
 function PostProvider({children}){
-    const [postListStatus, setPostListStatus]= useState(STATUS.loading);
+    const [postListStatus, setPostListStatus]= useState(STATUS.standBy);
     const [posts, setPosts]= useState([]);
     const [totalPages, setTotalPages]= useState(1);
     const [currentPage, setCurrentPage]= useState(1);
@@ -46,6 +47,7 @@ function PostProvider({children}){
     };
 
     const loadPostList= (chosenPage=1, author) => {
+        setPostListStatus(STATUS.loading);
         const page= parseNaturalNumber(chosenPage);
 
         if(!page){
@@ -56,10 +58,22 @@ function PostProvider({children}){
         changePostList(page, author);
     };
 
+    const resetPostContext= () => {
+        const {
+            postListStatus, posts, totalPages, currentPage, currentAuthor
+        }= initialState;
+
+        setPostListStatus(postListStatus);
+        setPosts(posts);
+        setTotalPages(totalPages);
+        setCurrentPage(currentPage);
+        setCurrentAuthor(currentAuthor);
+    };
+
     return <PostContext.Provider value={{
         postListStatus,
         posts, totalPages, currentPage, currentAuthor,
-        loadPostList
+        loadPostList, resetPostContext
     }}>
         {children}
     </PostContext.Provider>

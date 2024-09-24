@@ -4,7 +4,7 @@ function NotFoundInfo(){
 
     return (
         <>
-            <TbFaceIdError />
+            <TbFaceIdError className='icon'/>
             <p>Page not found</p>
         </>
     );
