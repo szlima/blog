@@ -20,7 +20,7 @@ const getPosts= async (page, author) => {
     const response= await api.get(`posts?${author? `userId=${author.id}&` : ''}_limit=${postsPerPage}&_page=${page}`);
 
     const list= response.data.map(async post => {
-        const image= `https://picsum.photos/id/${post.id+70}/300/200`;
+        const image= await getPostImage(post.id);
         const user= await getUser(post.userId);
 
         return {
@@ -42,6 +42,14 @@ const getUsers= async () => {
 const getUser= async id => {
     const response= await api.get(`users/${id}`);
     return response.data;
+};
+
+const getPostImage= async (postId) => {
+    const url= `https://picsum.photos/id/${postId+70}/300/200`;
+
+    return await axios.get(url)
+        .then(() => url)
+        .catch(() => '');
 };
 
 // ---------- ----------
