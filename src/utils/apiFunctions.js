@@ -66,14 +66,16 @@ const getPostListInfo= async (page, author) => {
 const getBlogData= async () => {
     const ownerData= await getUser(3);
     const authorsData= await getUsers();
-    const ownerPhoto= 'https://picsum.photos/id/64/300?grayscale',
+    const smallOwnerPhoto= 'https://picsum.photos/id/64/300?grayscale',
+        bigOwnerPhoto= 'https://picsum.photos/id/64/400/300',
         ownerDescription= 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod dolore illo amet, doloribus voluptas, fuga aspernatur sequi deleniti, error aliquid modi laboriosam facere et! Provident ad temporibus voluptas aspernatur in.',
         blogDescription= 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.';
 
     return {
         owner: {
             ...ownerData,
-            photo: ownerPhoto,
+            smallPhoto: smallOwnerPhoto,
+            bigPhoto: bigOwnerPhoto,
             description: ownerDescription
         },
         blogName: ownerData.name,

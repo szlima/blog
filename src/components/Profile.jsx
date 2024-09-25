@@ -11,7 +11,7 @@ function Profile(){
 
     return (
         <aside className={`profile ${unavailabilityClass}`}>
-            <img className='profile__photo' src={owner.photo} alt='Profile photo'/>
+            <img className='profile__photo' src={owner.smallPhoto} alt='Profile photo'/>
             <p className='profile__description'>{owner.description}</p>
         </aside>
     );
