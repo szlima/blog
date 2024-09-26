@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function Navbar(){
 
@@ -13,7 +13,9 @@ function Navbar(){
                     <Link to='/about'>About</Link>
                 </li>
                 <li className='navbar__list__item'>FAQ</li>
-                <li className='navbar__list__item'>Contact</li>
+                <li className='navbar__list__item'>
+                    <Link to='/contact'>Contact</Link>
+                </li>
             </ul>
         </nav>
     );

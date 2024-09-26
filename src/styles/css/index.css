@@ -111,6 +111,65 @@ a {
   margin: 0 1px 0 2rem;
 }
 
+.contact {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media only screen and (min-width: 1200px) {
+  .contact {
+    width: 70%;
+  }
+}
+.contact__heading {
+  margin: 0 auto 2rem;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+.contact__phone, .contact__email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.contact__social-media {
+  width: 70%;
+  margin: 1rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--highlight-color--2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+@media only screen and (min-width: 1200px) {
+  .contact__social-media {
+    gap: 2rem;
+  }
+}
+.contact__link {
+  padding: 0.5rem 0.5rem 0.25rem;
+  border-radius: 50%;
+  color: var(--main-color);
+  font-size: 1.3rem;
+}
+@media only screen and (min-width: 1200px) {
+  .contact__link {
+    font-size: 1.5rem;
+  }
+}
+.contact__link:hover {
+  background-color: var(--highlight-color--1);
+}
+.contact__info {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+}
+
 .unavailable-info {
   display: flex;
   flex-direction: column;
