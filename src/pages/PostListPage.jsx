@@ -3,7 +3,7 @@ import { Navigate, useParams } from 'react-router-dom';
 
 import { STATUS, POST_LIST_TYPE } from '../utils/dataInfo';
 
-import { PostContext } from '../contexts/PostContext';
+import { PostListContext } from '../contexts/PostListContext';
 
 import UnavailableInfo from '../components/incompleteData/UnavailableInfo';
 import LoadingInfo from '../components/incompleteData/LoadingInfo';
@@ -25,7 +25,7 @@ function PostListPage({listType}){
     const {page, authorId}= useParams();
     const {
         loadFullPostList, loadPostListByAuthor, postListStatus: status
-    }= useContext(PostContext);
+    }= useContext(PostListContext);
 
     const loadPostList= {
         [POST_LIST_TYPE.fullList]: () => loadFullPostList(page),

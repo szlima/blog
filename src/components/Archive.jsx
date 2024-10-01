@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import {getUnavailabilityClass} from '../utils/dataFunctions';
 
 import {BlogContext} from '../contexts/BlogContext';
-import {PostContext} from '../contexts/PostContext';
+import {PostListContext} from '../contexts/PostListContext';
 
 function Archive(){
     const navigate= useNavigate();
     const {owner, authors}= useContext(BlogContext);
-    const {currentAuthor}= useContext(PostContext);
+    const {currentAuthor}= useContext(PostListContext);
 
     const unavailabilityClass= getUnavailabilityClass([owner, authors]);
 

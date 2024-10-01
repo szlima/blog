@@ -16,14 +16,14 @@ const initialState= {
     currentAuthor: undefined,
     loadFullPostList: () => {},
     loadPostListByAuthor: () => {},
-    resetPostContext: () => {}
+    resetPostListContext: () => {}
 };
 
-const PostContext= createContext(initialState);
+const PostListContext= createContext(initialState);
 
 // ------------------------------------
 
-function PostProvider({children}){
+function PostListProvider({children}){
     const {getAuthor}= useContext(BlogContext);
     const [postListStatus, setPostListStatus]= useState(STATUS.standBy);
     const [posts, setPosts]= useState([]);
@@ -79,7 +79,7 @@ function PostProvider({children}){
         changePostList(page, author);
     };
 
-    const resetPostContext= () => {
+    const resetPostListContext= () => {
         const {
             postListStatus, posts, totalPages, currentPage, currentAuthor
         }= initialState;
@@ -91,13 +91,13 @@ function PostProvider({children}){
         setCurrentAuthor(currentAuthor);
     };
 
-    return <PostContext.Provider value={{
+    return <PostListContext.Provider value={{
         postListStatus,
         posts, totalPages, currentPage, currentAuthor,
-        loadFullPostList, loadPostListByAuthor, resetPostContext
+        loadFullPostList, loadPostListByAuthor, resetPostListContext
     }}>
         {children}
-    </PostContext.Provider>
+    </PostListContext.Provider>
 }
 
-export {PostContext, PostProvider};
+export {PostListContext, PostListProvider};

@@ -1,15 +1,15 @@
 
 import { useContext, useEffect } from 'react';
 
-import { PostContext } from '../contexts/PostContext';
+import { PostListContext } from '../contexts/PostListContext';
 
 import NotFoundInfo from '../components/incompleteData/NotFoundInfo';
 
 function NoPage(){
-    const {resetPostContext}= useContext(PostContext);
+    const {resetPostListContext}= useContext(PostListContext);
 
     useEffect(() => {
-        resetPostContext();
+        resetPostListContext();
     }, []);
 
     return (

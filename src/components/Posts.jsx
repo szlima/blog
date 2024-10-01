@@ -2,10 +2,10 @@ import { useContext } from 'react';
 
 import PostPreview from './PostPreview';
 
-import { PostContext } from '../contexts/PostContext';
+import { PostListContext } from '../contexts/PostListContext';
 
 function Posts(){
-    const {posts}= useContext(PostContext);
+    const {posts}= useContext(PostListContext);
 
     return (
         <div className='posts'>
