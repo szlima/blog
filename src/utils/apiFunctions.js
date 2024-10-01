@@ -84,6 +84,29 @@ const getBlogData= async () => {
     };
 };
 
+const getFAQ= () => {
+    const exampleFaq= [{
+            question: 'Vitae non recusandae quasi perspiciatis tempora dolorem pariatur asperiores?',
+            answer: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo fuga voluptatem, suscipit accusamus molestiae nobis, eum eligendi iure amet maxime earum.'
+        }, {
+            question: 'Voluptas beatae excepturi voluptates ipsum nemo aliquam laborum nostrum adipisci qui commodi rem a, nesciunt error libero doloremque dolor sapiente ab ipsam?',
+            answer: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione voluptate, quod sapiente necessitatibus magnam modi commodi quam consequuntur laborum unde. Libero, officia id. Animi ad natus, vel labore veritatis minima.'
+        }
+    ];
+
+    return new Promise(resolve => {
+        setTimeout(() => {
+            let faq= [];
+            for(let i=0; i<5; i++){
+                faq.push(exampleFaq[0]);
+                faq.push(exampleFaq[1]);
+            }
+            resolve(faq);
+        }, 1000);
+    });
+
+};
+
 // ---------- ----------
 
-export {getPostListInfo, getBlogData};
+export {getPostListInfo, getBlogData, getFAQ};

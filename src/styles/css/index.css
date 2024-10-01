@@ -111,6 +111,38 @@ a {
   margin: 0 1px 0 2rem;
 }
 
+.faq__heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+.faq__list {
+  list-style-position: inside;
+  list-style-type: upper-roman;
+}
+.faq__list__item {
+  margin: 2rem;
+  color: var(--main-color);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.faq__list__item::marker {
+  font-size: 1.2rem;
+}
+.faq__question {
+  display: inline;
+  font-size: 1.1rem;
+}
+.faq__answer {
+  margin-top: 0.5rem;
+  color: var(--default-color);
+  font-weight: initial;
+}
+.faq__answer::first-letter {
+  margin-left: 2rem;
+}
+
 .contact {
   padding: 1rem 0;
   display: flex;

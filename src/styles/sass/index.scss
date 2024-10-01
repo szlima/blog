@@ -110,6 +110,49 @@ a{
     }
 }
 
+.faq{
+
+    &__heading{
+        text-align: center;
+
+        font-size: 2rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+    }
+
+    &__list{
+        list-style-position: inside;
+        list-style-type: upper-roman;
+
+        &__item{
+            margin: 2rem;
+            color: var(--main-color);
+
+            font-weight: bold;
+            letter-spacing: 1px;
+
+            &::marker{
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    &__question{
+        display: inline;
+        font-size: 1.1rem;
+    }
+
+    &__answer{
+        margin-top: .5rem;
+        color: var(--default-color);
+        font-weight: initial;
+
+        &::first-letter{
+            margin-left: 2rem;
+        }
+    }
+}
+
 .contact{
     padding: 1rem 0;
     display: flex;

@@ -12,7 +12,9 @@ function Navbar(){
                 <li className='navbar__list__item'>
                     <Link to='/about'>About</Link>
                 </li>
-                <li className='navbar__list__item'>FAQ</li>
+                <li className='navbar__list__item'>
+                    <Link to='/faq'>FAQ</Link>
+                </li>
                 <li className='navbar__list__item'>
                     <Link to='/contact'>Contact</Link>
                 </li>

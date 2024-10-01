@@ -1,5 +1,6 @@
 
 import { BlogProvider } from './BlogContext';
+import { FaqProvider } from './FaqContext';
 import { PostProvider } from './PostContext';
 
 function composeProviders(providers){
@@ -13,5 +14,5 @@ function composeProviders(providers){
 }
 
 export default composeProviders([
-    BlogProvider, PostProvider
+    BlogProvider, FaqProvider, PostProvider
 ]);
