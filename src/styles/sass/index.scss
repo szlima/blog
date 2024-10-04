@@ -316,8 +316,17 @@ a{
     &__list{
         list-style: none;
 
-        .menu-on &{
+        &--active{
             border-bottom: thin solid var(--main-color);
+
+            .navbar__list__item{
+                display: block;
+                border-top: thin solid var(--secondary-color--2);
+
+                @include mixins.for-desktop-up{
+                    border: none;
+                }
+            }
         }
 
         @include mixins.for-desktop-up{
@@ -332,14 +341,13 @@ a{
             display: none;
             padding: 1rem;
 
-            border-top: thin solid var(--secondary-color--2);
-
             font-size: .9rem;
             text-align: center;
             text-transform: lowercase;
             letter-spacing: 2px;
 
             &:first-child{
+                display: block;
                 background-color: var(--secondary-color--2);
             }
 
@@ -349,14 +357,8 @@ a{
                 cursor: pointer;
             }
 
-            .menu-on &,
-            &:first-child{
-                display: block;
-            }
-
             @include mixins.for-desktop-up{
                 display: block;
-                border: none;
 
                 &:first-child{
                     display: none;
