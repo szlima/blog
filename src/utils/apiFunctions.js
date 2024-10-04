@@ -24,6 +24,7 @@ const getPosts= async (page, author) => {
         const user= await getUser(post.userId);
 
         return {
+            id: post.id,
             heading: post.title,
             firstContent: post.body,
             image,
@@ -61,6 +62,28 @@ const getPostListInfo= async (page, author) => {
     ]);
 
     return {newTotalPages, newPosts};
+};
+
+const getPost= async id => {
+    const response= await api.get(`/posts/${id}`);
+    const post= response.data;
+    const author= await getUser(post.userId);
+    const image= await getPostImage(id);
+    const anotherContent= [
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed odio molestiae numquam quam, error voluptates saepe, laboriosam facere id sapiente qui, labore nemo ab. Reprehenderit illum magnam minima ad mollitia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dolores dolore nesciunt quae! Veritatis nam rem numquam, enim laboriosam obcaecati quibusdam! Porro ullam, iste distinctio odit aut nulla amet commodi!',
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis reiciendis totam doloribus odit atque itaque delectus aperiam! Voluptatibus quos reprehenderit illum esse assumenda deleniti, qui harum at dolorum, nemo impedit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quibusdam veniam rem deserunt et quam, mollitia ratione exercitationem repellat modi inventore impedit quisquam! Aut eaque, adipisci veritatis in maiores harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut tempora, necessitatibus a in explicabo nam, amet suscipit odio dignissimos, velit quia officiis. Magni totam distinctio rem error, ex cum dolor!',
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, aliquid laboriosam rerum pariatur aspernatur sequi repellendus at doloribus. Explicabo ipsum autem, praesentium cupiditate reprehenderit nesciunt quae doloribus maiores sed animi.',
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate voluptatem illum soluta sit recusandae cum voluptates eaque! Eligendi illo saepe asperiores voluptatibus ipsa, ullam laborum a veniam animi consequuntur culpa! Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti in sit ut tenetur dicta eius quibusdam debitis quia vel, molestias quo qui facilis fuga aut nihil obcaecati libero vitae culpa!'
+    ];
+
+    return {
+        id,
+        heading: post.title,
+        firstContent: post.body,
+        anotherContent,
+        image,
+        author
+    };
 };
 
 const getBlogData= async () => {
@@ -109,4 +132,4 @@ const getFAQ= () => {
 
 // ---------- ----------
 
-export {getPostListInfo, getBlogData, getFAQ};
+export {getPostListInfo, getPost, getBlogData, getFAQ};

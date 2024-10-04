@@ -7,6 +7,7 @@ import IndexProvider from './contexts/IndexProvider';
 
 import MainPage from './pages/MainPage';
 import PostListPage from './pages/PostListPage';
+import PostPage from './pages/PostPage';
 import AboutPage from './pages/AboutPage';
 import FaqPage from './pages/FaqPage';
 import ContactPage from './pages/ContactPage';
@@ -25,6 +26,8 @@ createRoot(document.getElementById('root')).render(
 
           <Route path={'/authors/:authorId'} element={<PostListPage listType={POST_LIST_TYPE.listByAuthor}/>}/>
           <Route path={'/authors/:authorId/:page'} element={<PostListPage listType={POST_LIST_TYPE.listByAuthor}/>}/>
+
+          <Route path='/posts/:postId' element={<PostPage /> }/>
 
           <Route path='/about' element={<AboutPage />}/>
           <Route path='/faq' element={<FaqPage />}/>

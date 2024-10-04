@@ -380,6 +380,33 @@ a {
   margin-bottom: 3rem;
 }
 
+.post__heading {
+  padding-bottom: 1rem;
+  color: var(--main-color);
+  text-transform: capitalize;
+  letter-spacing: 2px;
+}
+.post__image {
+  width: 100%;
+  margin: auto;
+}
+.post__content::first-letter {
+  text-transform: uppercase;
+}
+.post__content--full::first-letter {
+  margin-left: 2rem;
+}
+.post__author {
+  width: fit-content;
+  margin: auto;
+  padding: 0.5rem;
+  color: var(--secondary-color--1);
+  background-color: var(--main-color);
+  font-size: 0.9rem;
+}
+.post__author::before {
+  content: "Posted by ";
+}
 .post--preview {
   padding: 2rem;
   border-top: thin solid var(--highlight-color--2);
@@ -425,34 +452,21 @@ a {
     flex: 2;
   }
 }
-.post__heading {
-  padding-bottom: 1rem;
-  color: var(--main-color);
-  text-transform: capitalize;
-  letter-spacing: 2px;
-}
-.post__image {
-  width: 100%;
-  margin: auto;
-}
-.post__content::first-letter {
-  text-transform: uppercase;
-}
-.post__author {
-  width: fit-content;
-  margin: auto;
-  padding: 0.5rem;
-  color: var(--secondary-color--1);
-  background-color: var(--main-color);
-  font-size: 0.9rem;
-}
 @media only screen and (min-width: 1200px) {
-  .post__author {
+  .post--preview .post__author {
     margin: initial;
   }
 }
-.post__author::before {
-  content: "Posted by ";
+.post--full {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.post--full .post__author {
+  font-size: 0.8rem;
+}
+.post--full .post__author:hover {
+  cursor: pointer;
 }
 
 .pagination__list {
