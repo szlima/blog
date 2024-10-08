@@ -130,6 +130,12 @@ const getFAQ= () => {
 
 };
 
+const sendComment= async comment => {
+    const response= await api.post(`/comments`, comment);
+    console.log(response.data);
+    return response.data;
+};
+
 // ---------- ----------
 
-export {getPostListInfo, getPost, getBlogData, getFAQ};
+export {getPostListInfo, getPost, getBlogData, getFAQ, sendComment};

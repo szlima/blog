@@ -7,6 +7,7 @@
   --main-color: #5d598f;
   --default-color: #555;
   --unavailable-color: #eee;
+  --alert-color: #ce4545;
   --main-font: sans-serif;
   --highlight-font: "WindSong", cursive;
   --width-desktop-up: 1200px;
@@ -471,6 +472,65 @@ a {
   font-size: 0.8rem;
 }
 .post--full .post__author:hover {
+  cursor: pointer;
+}
+
+.comment-area .comment-form {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.comment-area .comment-form--alert .comment-form__alert {
+  visibility: visible;
+}
+.comment-area .comment-form--alert .comment-form__field--textarea {
+  border-color: var(--alert-color);
+}
+.comment-area .comment-form__heading {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+.comment-area .comment-form__alert {
+  color: var(--alert-color);
+  font-size: 0.8em;
+  visibility: hidden;
+}
+.comment-area .comment-form__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.comment-area .comment-form__field, .comment-area .comment-form__submit {
+  padding: 0.5rem 1rem;
+  flex: 100%;
+  font-size: 1rem;
+  font-family: var(--main-font);
+}
+.comment-area .comment-form__field:focus, .comment-area .comment-form__submit:focus {
+  outline: 2px solid var(--highlight-color--1);
+}
+.comment-area .comment-form__field--input, .comment-area .comment-form__field--textarea {
+  color: var(--default-color);
+  border: 1px solid var(--main-color);
+}
+@media only screen and (min-width: 1200px) {
+  .comment-area .comment-form__field--input {
+    flex: 1;
+  }
+}
+.comment-area .comment-form__field--textarea {
+  height: 7rem;
+  resize: vertical;
+}
+.comment-area .comment-form__submit {
+  color: var(--secondary-color--1);
+  background-color: var(--main-color);
+  border: none;
+  letter-spacing: 2px;
+}
+.comment-area .comment-form__submit:hover {
   cursor: pointer;
 }
 
