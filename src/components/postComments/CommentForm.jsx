@@ -54,11 +54,18 @@ function CommentForm(){
         };
 
         sendNewComment(newComment);
+        resetFields();
+    };
+
+    const resetFields= () => {
+        setName('');
+        setEmail('');
+        setBody('');
     };
 
     return (
         <div className={`comment-form ${getFormInfoClass()}`}>
-            <h4 className='comment-form__heading'>Leave a comment</h4>
+            <h3 className='comment-form__heading'>Leave a comment</h3>
             <p className='comment-form__alert'>{NEW_COMMENT_INFO[alertInfo]}</p>
             <form className='comment-form__wrapper'>
                 <input type='text' className='comment-form__field comment-form__field--input'

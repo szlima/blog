@@ -476,6 +476,72 @@ a {
   cursor: pointer;
 }
 
+.comment-area .comment-list {
+  margin: 2rem 0;
+}
+.comment-area .comment-list__toggle-display {
+  width: 100%;
+  color: var(--main-color);
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  font-weight: bold;
+}
+.comment-area .comment-list__toggle-display:hover {
+  cursor: pointer;
+}
+.comment-area .comment-list__toggle-display::before, .comment-area .comment-list__toggle-display::after {
+  width: 30%;
+  border-top: 1px solid var(--main-color);
+  content: "";
+  position: absolute;
+  top: 50%;
+}
+.comment-area .comment-list__toggle-display::before {
+  left: 0;
+}
+.comment-area .comment-list__toggle-display::after {
+  right: 0;
+}
+.comment-area .comment-list__heading {
+  margin: 2rem 0 1rem;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+.comment-area .comment-list .comments {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--main-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.comment-area .comment-list .comments .comment {
+  padding: 1rem;
+  background-color: var(--secondary-color--2);
+  border: 1px solid var(--highlight-color--2);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.comment-area .comment-list .comments .comment__author__name {
+  margin-bottom: 0.1rem;
+  color: var(--main-color);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.comment-area .comment-list .comments .comment__author__email {
+  font-size: 0.7rem;
+  font-style: italic;
+}
+.comment-area .comment-list .comments .comment__body {
+  margin-left: 1.5rem;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
 .comment-area .comment-form {
   margin: 1rem 0;
   display: flex;
