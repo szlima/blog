@@ -1,16 +1,20 @@
 import { createContext, useState } from 'react';
 
 import { parseNaturalNumber, isEmpty } from '../utils/dataFunctions';
-import { getPost } from '../utils/apiFunctions';
+import { getPost, sendComment } from '../utils/apiFunctions';
 import { STATUS } from '../utils/dataInfo';
 
 // ------------------------------------
 
 const initialState= {
     postStatus: STATUS.standBy,
+    newCommentStatus: STATUS.standBy,
     currentPost: undefined,
+    commentList: [],
     loadPost: () => {},
-    resetPostContext: () => {}
+    resetPostContext: () => {},
+    resetNewCommentStatus: () => {},
+    sendNewComment: () => {}
 };
 
 const PostContext= createContext(initialState);
@@ -19,7 +23,9 @@ const PostContext= createContext(initialState);
 
 function PostProvider({children}){
     const [postStatus, setPostStatus] = useState(STATUS.standBy);
+    const [newCommentStatus, setNewCommentStatus] = useState(STATUS.standBy);
     const [currentPost, setCurrentPost]= useState(undefined);
+    const [commentList, setCommentList]= useState([]);
 
     const validateLoading= post => {
         if(isEmpty(post))
@@ -58,10 +64,30 @@ function PostProvider({children}){
         setCurrentPost(currentPost);
     };
 
+    const resetNewCommentStatus= () => {
+        const {newCommentStatus}= initialState;
+        setNewCommentStatus(newCommentStatus);
+    };
+
+    const sendNewComment= comment => {
+        setNewCommentStatus(STATUS.loading);
+
+        sendComment(currentPost.id, comment)
+            .then(data => {
+                const comments= commentList;
+                comments.push(data);
+                setCommentList(comments);
+                setNewCommentStatus(STATUS.completed);
+            }).catch(() => {
+                console.error('Submission error: Comment not sent.');
+                setNewCommentStatus(STATUS.unavailable);
+            });
+    };
+
     return (
         <PostContext.Provider value={{
-            postStatus, currentPost,
-            loadPost, resetPostContext
+            postStatus, newCommentStatus, currentPost, commentList,
+            loadPost, resetPostContext, resetNewCommentStatus, sendNewComment
         }}>
             {children}
         </PostContext.Provider>

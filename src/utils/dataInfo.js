@@ -12,4 +12,10 @@ const POST_LIST_TYPE= {
     listByAuthor: 'list-by-author'
 };
 
-export {STATUS, POST_LIST_TYPE};
+const NEW_COMMENT_INFO= {
+    required: 'The message field is required!',
+    completed: 'Thanks for your comment!',
+    unavailable: 'Submission error: Comment not sent.'
+};
+
+export {STATUS, POST_LIST_TYPE, NEW_COMMENT_INFO};

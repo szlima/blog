@@ -544,13 +544,30 @@ a{
         flex-direction: column;
         gap: .3rem;
 
-        &--alert{
+        &--completed,
+        &--unavailable,
+        &--required{
             .comment-form__alert{
                 visibility: visible;
             }
+        }
 
+        &--unavailable,
+        &--required{
+            .comment-form__alert{
+                color: var(--error-color);
+            }
+        }
+
+        &--completed{
+            .comment-form__alert{
+                color: var(--completed-color);
+            }
+        }
+
+        &--required{
             .comment-form__field--textarea{
-                border-color: var(--alert-color);
+                border-color: var(--error-color);
             }
         }
 
@@ -560,7 +577,7 @@ a{
         }
 
         &__alert{
-            color: var(--alert-color);
+            height: 1rem;
             font-size: .8em;
             visibility: hidden;
         }

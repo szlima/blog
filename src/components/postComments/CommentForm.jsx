@@ -1,52 +1,72 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
-import { sendComment } from '../../utils/apiFunctions';
 import { isEmpty } from '../../utils/dataFunctions';
+import { STATUS, NEW_COMMENT_INFO } from '../../utils/dataInfo';
 
 import { PostContext } from '../../contexts/PostContext';
 
 function CommentForm(){
-    const {currentPost}= useContext(PostContext);
+    const {
+        newCommentStatus, resetNewCommentStatus, sendNewComment
+    }= useContext(PostContext);
+    const [alertInfo, setAlertInfo]= useState('');
     const [name, setName]= useState('');
     const [email, setEmail]= useState('');
-    const [message, setMessage]= useState('');
+    const [body, setBody]= useState('');
 
-    const handleMessageField= e => {
+    useEffect(() => {
+
+        if((newCommentStatus === STATUS.completed) || (newCommentStatus === STATUS.unavailable))
+            showSubmissionInfo();
+
+    }, [newCommentStatus]);
+
+    const showSubmissionInfo= () => {
+        setAlertInfo(newCommentStatus);
+
+        setTimeout(() => {
+            setAlertInfo('');
+            resetNewCommentStatus();
+        }, 3000);
+    };
+
+    const getFormInfoClass= () => alertInfo ? `comment-form--${alertInfo}` : '';
+
+    const handleBodyField= e => {
         if(e.target.value)
-            e.target.parentNode.parentNode.classList.remove('comment-form--alert');
+            setAlertInfo('');
 
-        setMessage(e.target.value);
+        setBody(e.target.value);
     }
 
     const handleSubmit= e => {
         e.preventDefault();
 
-        if(isEmpty(message)){
-            e.target.parentNode.parentNode.classList.add('comment-form--alert');
+        if(isEmpty(body)){
+            setAlertInfo('required');
             return;
         }
 
         const newComment= {
-            postId: currentPost.id,
             name: name ? name : 'Anonymous',
             email,
-            message            
+            body
         };
 
-        sendComment(newComment);
+        sendNewComment(newComment);
     };
 
     return (
-        <div className='comment-form'>
+        <div className={`comment-form ${getFormInfoClass()}`}>
             <h4 className='comment-form__heading'>Leave a comment</h4>
-            <p className='comment-form__alert'>The message field is required!</p>
+            <p className='comment-form__alert'>{NEW_COMMENT_INFO[alertInfo]}</p>
             <form className='comment-form__wrapper'>
                 <input type='text' className='comment-form__field comment-form__field--input'
                     placeholder='Name' value={name} onChange={e => setName(e.target.value)}/>
                 <input type='text' className='comment-form__field comment-form__field--input'
                     placeholder='E-mail' value={email} onChange={e => setEmail(e.target.value)}/>
                 <textarea className='comment-form__field comment-form__field--textarea'
-                    placeholder='Your message' value={message} onChange={handleMessageField}></textarea>
+                    placeholder='Your message' value={body} onChange={handleBodyField}></textarea>
                 <button type='submit' className='comment-form__submit' onClick={handleSubmit}>Post</button>
             </form>
         </div>
