@@ -80,15 +80,11 @@ function PostListProvider({children}){
     };
 
     const resetPostListContext= () => {
-        const {
-            postListStatus, posts, totalPages, currentPage, currentAuthor
-        }= initialState;
-
-        setPostListStatus(postListStatus);
-        setPosts(posts);
-        setTotalPages(totalPages);
-        setCurrentPage(currentPage);
-        setCurrentAuthor(currentAuthor);
+        setPostListStatus(STATUS.standBy);
+        setPosts([]);
+        setTotalPages(1);
+        setCurrentPage(1);
+        setCurrentAuthor(undefined);
     };
 
     return <PostListContext.Provider value={{

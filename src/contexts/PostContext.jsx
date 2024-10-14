@@ -59,15 +59,13 @@ function PostProvider({children}){
     };
 
     const resetPostContext= () => {
-        const {postStatus, currentPost}= initialState;
-        setPostStatus(postStatus);
-        setCurrentPost(currentPost);
+        setPostStatus(STATUS.standBy);
+        setNewCommentStatus(STATUS.standBy);
+        setCurrentPost(undefined);
+        setCommentList([]);
     };
 
-    const resetNewCommentStatus= () => {
-        const {newCommentStatus}= initialState;
-        setNewCommentStatus(newCommentStatus);
-    };
+    const resetNewCommentStatus= () => setNewCommentStatus(STATUS.standBy);
 
     const sendNewComment= comment => {
         setNewCommentStatus(STATUS.loading);
