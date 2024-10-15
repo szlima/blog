@@ -130,6 +130,11 @@ const getFAQ= () => {
 
 };
 
+const getComments= async postId => {
+    const response= await api.get(`posts/${postId}/comments`);
+    return response.data;
+};
+
 const sendComment= async (postId, comment) => {
     const response= await api.post(`posts/${postId}/comments`, comment);
     return response.data;
@@ -137,4 +142,4 @@ const sendComment= async (postId, comment) => {
 
 // ---------- ----------
 
-export {getPostListInfo, getPost, getBlogData, getFAQ, sendComment};
+export {getPostListInfo, getPost, getBlogData, getFAQ, getComments, sendComment};

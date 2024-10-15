@@ -1,17 +1,19 @@
 import { createContext, useState } from 'react';
 
 import { parseNaturalNumber, isEmpty } from '../utils/dataFunctions';
-import { getPost, sendComment } from '../utils/apiFunctions';
+import { getPost, getComments, sendComment } from '../utils/apiFunctions';
 import { STATUS } from '../utils/dataInfo';
 
 // ------------------------------------
 
 const initialState= {
     postStatus: STATUS.standBy,
+    commentListStatus: STATUS.standBy,
     newCommentStatus: STATUS.standBy,
     currentPost: undefined,
     commentList: [],
     loadPost: () => {},
+    loadComments: () => {},
     resetPostContext: () => {},
     resetNewCommentStatus: () => {},
     sendNewComment: () => {}
@@ -23,6 +25,7 @@ const PostContext= createContext(initialState);
 
 function PostProvider({children}){
     const [postStatus, setPostStatus] = useState(STATUS.standBy);
+    const [commentListStatus, setCommentListStatus] = useState(STATUS.standBy);
     const [newCommentStatus, setNewCommentStatus] = useState(STATUS.standBy);
     const [currentPost, setCurrentPost]= useState(undefined);
     const [commentList, setCommentList]= useState([]);
@@ -35,7 +38,7 @@ function PostProvider({children}){
     };
 
     const changeCurrentPost= postId => {
-        
+
         getPost(postId)
             .then(data => {
                 setCurrentPost(data);
@@ -58,8 +61,23 @@ function PostProvider({children}){
         changeCurrentPost(postId);
     };
 
+    const loadComments= () => {
+        setCommentListStatus(STATUS.loading);
+
+        getComments(currentPost.id)
+            .then(data => {
+                const comments= data.concat(commentList);
+                setCommentList(comments);
+                setCommentListStatus(STATUS.completed);
+            }).catch(() => {
+                console.error('Loading error: Comment list unavailable.');
+                setCommentListStatus(STATUS.unavailable);
+            });
+    };
+
     const resetPostContext= () => {
         setPostStatus(STATUS.standBy);
+        setCommentListStatus(STATUS.standBy);
         setNewCommentStatus(STATUS.standBy);
         setCurrentPost(undefined);
         setCommentList([]);
@@ -84,8 +102,9 @@ function PostProvider({children}){
 
     return (
         <PostContext.Provider value={{
-            postStatus, newCommentStatus, currentPost, commentList,
-            loadPost, resetPostContext, resetNewCommentStatus, sendNewComment
+            postStatus, commentListStatus, newCommentStatus,
+            currentPost, commentList, loadPost, loadComments,
+            resetPostContext, resetNewCommentStatus, sendNewComment
         }}>
             {children}
         </PostContext.Provider>
