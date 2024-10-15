@@ -4,7 +4,7 @@ import {
     FaPhone, FaYoutube, FaInstagram, FaTiktok
 } from 'react-icons/fa';
 
-import { BlogContext } from '../contexts/BlogContext';
+import { BlogContext } from '../../contexts/BlogContext';
 
 function Contact(){
     const {owner}= useContext(BlogContext);

@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import {getUnavailabilityClass} from '../utils/dataFunctions';
+import {getUnavailabilityClass} from '../../utils/dataFunctions';
 
-import {BlogContext} from '../contexts/BlogContext';
-import {PostListContext} from '../contexts/PostListContext';
+import {BlogContext} from '../../contexts/BlogContext';
+import {PostListContext} from '../../contexts/PostListContext';
 
 function Archive(){
     const navigate= useNavigate();

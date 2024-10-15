@@ -1,5 +1,5 @@
 
-import About from '../components/About';
+import About from '../components/secondaryPages/About';
 
 function AboutPage(){
 

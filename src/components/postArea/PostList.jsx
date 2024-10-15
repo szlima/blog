@@ -4,7 +4,7 @@ import PostListHeading from './PostListHeading';
 import Posts from './Posts';
 import Pagination from './Pagination';
 
-import { PostListContext } from '../contexts/PostListContext';
+import { PostListContext } from '../../contexts/PostListContext';
 
 function PostList(){
     const {posts}= useContext(PostListContext);

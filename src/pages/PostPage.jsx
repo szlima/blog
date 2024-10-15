@@ -7,8 +7,8 @@ import { PostContext } from '../contexts/PostContext';
 
 import LoadingInfo from '../components/incompleteData/LoadingInfo';
 import UnavailableInfo from '../components/incompleteData/UnavailableInfo';
-import PostArea from '../components/PostArea';
-import Aside from '../components/Aside';
+import PostArea from '../components/postArea/PostArea';
+import Aside from '../components/sidebar/Aside';
 
 const postComponents= {
     [STATUS.completed]: <>

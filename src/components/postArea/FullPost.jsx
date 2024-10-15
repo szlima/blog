@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { PostContext } from '../contexts/PostContext';
+import { PostContext } from '../../contexts/PostContext';
 
-import CommentArea from './postComments/CommentArea';
+import CommentArea from '../postComments/CommentArea';
 
 function FullPost(){
     const {currentPost: post}= useContext(PostContext);

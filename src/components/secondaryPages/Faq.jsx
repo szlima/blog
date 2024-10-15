@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { FaqContext } from '../contexts/FaqContext';
+import { FaqContext } from '../../contexts/FaqContext';
 
 function Faq(){
     const {faq}= useContext(FaqContext);

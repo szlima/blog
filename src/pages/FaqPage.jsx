@@ -4,7 +4,7 @@ import { FaqContext } from '../contexts/FaqContext';
 
 import { STATUS } from '../utils/dataInfo';
 
-import Faq from '../components/Faq';
+import Faq from '../components/secondaryPages/Faq';
 import LoadingInfo from '../components/incompleteData/LoadingInfo';
 import UnavailableInfo from '../components/incompleteData/UnavailableInfo';
 

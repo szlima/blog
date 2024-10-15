@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PiArrowLineLeftBold, PiArrowLineRightBold } from 'react-icons/pi';
 
-import { PostListContext } from '../contexts/PostListContext';
+import { PostListContext } from '../../contexts/PostListContext';
 
 function Pagination(){
     const navigate= useNavigate();

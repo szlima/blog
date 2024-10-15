@@ -1,5 +1,5 @@
 
-import Contact from '../components/Contact';
+import Contact from '../components/secondaryPages/Contact';
 
 function ContactPage(){
 

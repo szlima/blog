@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import { PostListContext } from "../contexts/PostListContext";
+import { PostListContext } from '../../contexts/PostListContext';
 
 function PostListHeading(){
     const {currentAuthor}= useContext(PostListContext);

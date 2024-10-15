@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 
-import {getUnavailabilityClass} from '../utils/dataFunctions';
+import {getUnavailabilityClass} from '../../utils/dataFunctions';
 
-import { BlogContext } from '../contexts/BlogContext';
+import { BlogContext } from '../../contexts/BlogContext';
 
 function Profile(){
     const {owner}= useContext(BlogContext);
