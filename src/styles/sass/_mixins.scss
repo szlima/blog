@@ -1,12 +1,13 @@
+@use "variables";
 
 @mixin for-tablet-portrait-up{
-    @media only screen and (min-width: 600px){
+    @media only screen and (min-width: variables.$width-tablet-portrait-up){
         @content;
     }
 }
 
 @mixin for-desktop-up{
-    @media only screen and (min-width: 1200px){
+    @media only screen and (min-width: variables.$width-desktop-up){
         @content;
     }
 }

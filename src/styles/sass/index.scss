@@ -13,10 +13,10 @@ body{
     width: 100dvw;
     min-height: 100dvh;
 
-    background-color: var(--secondary-color--2);
-    color: var(--default-color);
+    background-color: variables.$secondary-color--2;
+    color: variables.$default-color;
 
-    font-family: var(--main-font);
+    font-family: variables.$main-font;
     font-size: 16px;
 
     @include mixins.for-desktop-up{
@@ -43,7 +43,7 @@ a{
 }
 
 .unavailable{
-    background-color: var(--unavailable-color);
+    background-color: variables.$unavailable-color;
 
     & > :nth-child(n){
         visibility: hidden;
@@ -126,7 +126,7 @@ a{
 
         &__item{
             margin: 2rem;
-            color: var(--main-color);
+            color: variables.$main-color;
 
             font-weight: bold;
             letter-spacing: 1px;
@@ -144,7 +144,7 @@ a{
 
     &__answer{
         margin-top: .5rem;
-        color: var(--default-color);
+        color: variables.$default-color;
         font-weight: initial;
 
         &::first-letter{
@@ -183,7 +183,7 @@ a{
         width: 70%;
         margin: 1rem auto 0;
         padding-top: 1rem;
-        border-top: 1px solid var(--highlight-color--2);
+        border-top: 1px solid variables.$highlight-color--2;
 
         display: flex;
         flex-wrap: wrap;
@@ -200,7 +200,7 @@ a{
         padding: .5rem .5rem .25rem;
         border-radius: 50%;
 
-        color: var(--main-color);
+        color: variables.$main-color;
         font-size: 1.3rem;
 
         @include mixins.for-desktop-up{
@@ -208,7 +208,7 @@ a{
         }
 
         &:hover{
-            background-color: var(--highlight-color--1);
+            background-color: variables.$highlight-color--1;
         }
     }
 
@@ -243,14 +243,14 @@ a{
 
     padding: 0 1rem;
 
-    background-color: var(--secondary-color--1);
+    background-color: variables.$secondary-color--1;
 
     @include mixins.for-desktop-up{
-        max-width: var(--width-desktop-up);
+        max-width: variables.$width-desktop-up;
         margin: auto;
         padding: 0 2rem;
 
-        border: 1px solid var(--highlight-color--2);
+        border: 1px solid variables.$highlight-color--2;
         border-radius: 1rem;
     }
 
@@ -288,7 +288,7 @@ a{
     }
 
     &__heading{
-        font-family: var(--highlight-font);
+        font-family: variables.$highlight-font;
         font-size: 2.5rem;
 
         @include mixins.for-tablet-portrait-up{
@@ -303,7 +303,7 @@ a{
     &__description{
         margin: .5rem 0;
 
-        color: var(--main-color);
+        color: variables.$main-color;
 
         font-size: .9rem;
         letter-spacing: 2px;
@@ -317,11 +317,11 @@ a{
         list-style: none;
 
         &--active{
-            border-bottom: thin solid var(--main-color);
+            border-bottom: thin solid variables.$main-color;
 
             .navbar__list__item{
                 display: block;
-                border-top: thin solid var(--secondary-color--2);
+                border-top: thin solid variables.$secondary-color--2;
 
                 @include mixins.for-desktop-up{
                     border: none;
@@ -334,7 +334,7 @@ a{
             justify-content: center;
             gap: 1rem;
 
-            border-bottom: thin solid var(--main-color);
+            border-bottom: thin solid variables.$main-color;
         }
 
         &__item{
@@ -348,11 +348,11 @@ a{
 
             &:first-child{
                 display: block;
-                background-color: var(--secondary-color--2);
+                background-color: variables.$secondary-color--2;
             }
 
             &:hover{
-                color: var(--main-color);
+                color: variables.$main-color;
 
                 cursor: pointer;
             }
@@ -388,7 +388,7 @@ a{
 
     @include mixins.for-desktop-up{
         padding-right: 2rem;
-        border-right: thin solid var(--highlight-color--2);
+        border-right: thin solid variables.$highlight-color--2;
     }
 }
 
@@ -403,9 +403,9 @@ a{
 
         border-width: 2px 0;
         border-style: solid;
-        border-color: var(--main-color);
+        border-color: variables.$main-color;
 
-        color: var(--main-color);
+        color: variables.$main-color;
 
         font-size: 1rem;
         font-weight: normal;
@@ -414,8 +414,8 @@ a{
 
         @include mixins.for-desktop-up{
             border: 0;
-            color: var(--highlight-color--2);
-            background-color: var(--main-color);
+            color: variables.$highlight-color--2;
+            background-color: variables.$main-color;
         }
     }
 }
@@ -428,7 +428,7 @@ a{
 
     &__heading{
         padding-bottom: 1rem;
-        color: var(--main-color);
+        color: variables.$main-color;
 
         text-transform: capitalize;
         letter-spacing: 2px;
@@ -469,8 +469,8 @@ a{
 
     &--preview{
         padding: 2rem;
-        border-top: thin solid var(--highlight-color--2);
-        border-bottom: thin solid var(--highlight-color--2);
+        border-top: thin solid variables.$highlight-color--2;
+        border-bottom: thin solid variables.$highlight-color--2;
 
         text-align: center;
 
@@ -483,7 +483,7 @@ a{
         }
 
         &:hover{
-            background-color: var(--secondary-color--2);
+            background-color: variables.$secondary-color--2;
             cursor: pointer;
         }
 
@@ -520,8 +520,8 @@ a{
             margin: auto;
             padding: .5rem;
 
-            color: var(--secondary-color--1);
-            background-color: var(--main-color);
+            color: variables.$secondary-color--1;
+            background-color: variables.$main-color;
 
             @include mixins.for-desktop-up{
                 margin: initial;
@@ -535,7 +535,7 @@ a{
         gap: 1rem;
 
         .post__author{
-            color: var(--main-color);
+            color: variables.$main-color;
             font-weight: bold;
         }
     }
@@ -547,7 +547,7 @@ a{
 
         &__toggle-display{
             width: 100%;
-            color: var(--main-color);
+            color: variables.$main-color;
             background-color: transparent;
             border: none;
 
@@ -566,7 +566,7 @@ a{
             &::before,
             &::after{
                 width: 30%;
-                border-top: 1px solid var(--main-color);
+                border-top: 1px solid variables.$main-color;
 
                 content: '';
                 position: absolute;
@@ -590,7 +590,7 @@ a{
 
         .comments{
             padding-bottom: 2rem;
-            border-bottom: 1px solid var(--main-color);
+            border-bottom: 1px solid variables.$main-color;
 
             display: flex;
             flex-direction: column;
@@ -598,8 +598,8 @@ a{
 
             .comment{
                 padding: 1rem;
-                background-color: var(--secondary-color--2);
-                border: 1px solid var(--highlight-color--2);
+                background-color: variables.$secondary-color--2;
+                border: 1px solid variables.$highlight-color--2;
 
                 display: flex;
                 flex-direction: column;
@@ -609,7 +609,7 @@ a{
 
                     &__name{
                         margin-bottom: .1rem;
-                        color: var(--main-color);
+                        color: variables.$main-color;
 
                         font-size: .9rem;
                         font-weight: bold;
@@ -647,19 +647,19 @@ a{
         &--unavailable,
         &--required{
             .comment-form__alert{
-                color: var(--error-color);
+                color: variables.$error-color;
             }
         }
 
         &--completed{
             .comment-form__alert{
-                color: var(--completed-color);
+                color: variables.$completed-color;
             }
         }
 
         &--required{
             .comment-form__field--textarea{
-                border-color: var(--error-color);
+                border-color: variables.$error-color;
             }
         }
 
@@ -687,10 +687,10 @@ a{
             flex: 100%;
 
             font-size: 1rem;
-            font-family: var(--main-font);
+            font-family: variables.$main-font;
 
             &:focus{
-                outline: 2px solid var(--highlight-color--1);
+                outline: 2px solid variables.$highlight-color--1;
             }
         }
 
@@ -698,8 +698,8 @@ a{
 
             &--input,
             &--textarea{
-                color: var(--default-color);
-                border: 1px solid var(--main-color);
+                color: variables.$default-color;
+                border: 1px solid variables.$main-color;
             }
 
             &--input{
@@ -716,8 +716,8 @@ a{
         }
 
         &__submit{
-            color: var(--secondary-color--1);
-            background-color: var(--main-color);
+            color: variables.$secondary-color--1;
+            background-color: variables.$main-color;
             border: none;
             letter-spacing: 2px;
 
@@ -730,7 +730,7 @@ a{
 
 .share-bar{
     padding-top: 1rem;
-    border-top: 1px solid var(--highlight-color--2);
+    border-top: 1px solid variables.$highlight-color--2;
     display: flex;
     flex: 100%;
     gap: 1rem;
@@ -748,7 +748,7 @@ a{
     }
 
     &__link{
-        color: var(--main-color);
+        color: variables.$main-color;
         font-size: 1.2rem;
 
         &:hover{
@@ -771,8 +771,8 @@ a{
         width: 2.5rem;
         height: 2.5rem;
 
-        background-color: var(--secondary-color--2);
-        color: var(--main-color);
+        background-color: variables.$secondary-color--2;
+        color: variables.$main-color;
         border-radius: 50%;
         font-size: 1.1rem;
 
@@ -789,13 +789,13 @@ a{
         }
 
         &:hover:not(&--disabled, &--selected){
-            background-color: var(--highlight-color--1);
+            background-color: variables.$highlight-color--1;
             cursor: pointer;
         }
 
         &--selected{
-            color: var(--secondary-color--1);
-            background-color: var(--main-color);
+            color: variables.$secondary-color--1;
+            background-color: variables.$main-color;
 
             &:hover{
                 cursor: default;
@@ -803,10 +803,10 @@ a{
         }
 
         &--disabled{
-            color: var(--secondary-color--1);
+            color: variables.$secondary-color--1;
 
             @include mixins.for-desktop-up{
-                color: var(--secondary-color--2);
+                color: variables.$secondary-color--2;
             }
         }
     }
@@ -817,14 +817,14 @@ a{
     margin: 1rem auto 0;
     padding-top: 1rem;
 
-    border-top: thin solid var(--highlight-color--2);
+    border-top: thin solid variables.$highlight-color--2;
 
     font-weight: bold;
     font-size: .9rem;
     text-align: center;
 
     &__link{
-        color: var(--main-color);
+        color: variables.$main-color;
         text-decoration: none;
     }
 }
@@ -849,7 +849,7 @@ a{
 
     &__description{
         padding-bottom: 2rem;
-        border-bottom: thin solid var(--highlight-color--2);
+        border-bottom: thin solid variables.$highlight-color--2;
 
         font-size: .8rem;
         text-align: center;
@@ -862,9 +862,9 @@ a{
     overflow: hidden;
 
     &__heading{
-        color: var(--main-color);
+        color: variables.$main-color;
 
-        font-family: var(--highlight-font);
+        font-family: variables.$highlight-font;
         font-size: 2rem;
         text-align: center;
     }
@@ -885,7 +885,7 @@ a{
             position: absolute;
             bottom: 50%;
 
-            border-bottom: thin solid var(--highlight-color--2);
+            border-bottom: thin solid variables.$highlight-color--2;
         }
 
         &::before{
@@ -907,21 +907,21 @@ a{
         margin-bottom: .5rem;
         padding: .5rem;
 
-        background-color: var(--highlight-color--1);
+        background-color: variables.$highlight-color--1;
         border-radius: 1rem;
 
         font-size: 1rem;
         text-align: center;
 
         &:not(&--selected):hover{
-            background-color: var(--highlight-color--2);
+            background-color: variables.$highlight-color--2;
             cursor: pointer;
         }
 
         &--selected{
-            color: var(--main-color);
-            background-color: var(--highlight-color--2);
-            border: thin solid var(--main-color);
+            color: variables.$main-color;
+            background-color: variables.$highlight-color--2;
+            border: thin solid variables.$main-color;
             cursor: default;
         }
     }
@@ -935,7 +935,7 @@ a{
     letter-spacing: .1rem;
 
     &__dev{
-        color: var(--main-color);
+        color: variables.$main-color;
         text-decoration: none;
     }
 }
