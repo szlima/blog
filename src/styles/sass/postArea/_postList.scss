@@ -1,0 +1,30 @@
+@use "../variables";
+@use "../mixins";
+
+.post-list{
+    &--empty{
+        margin: 2rem;
+        text-align: center;
+    }
+
+    &__heading{
+        padding: .5rem 1rem;
+
+        border-width: 2px 0;
+        border-style: solid;
+        border-color: variables.$main-color;
+
+        color: variables.$main-color;
+
+        font-size: 1rem;
+        font-weight: normal;
+        text-align: center;
+        letter-spacing: 2px;
+
+        @include mixins.for-desktop-up{
+            border: 0;
+            color: variables.$highlight-color--2;
+            background-color: variables.$main-color;
+        }
+    }
+}

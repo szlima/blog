@@ -1,0 +1,11 @@
+@use "../variables";
+@use "../mixins";
+
+.post-area{
+    flex: 3;
+
+    @include mixins.for-desktop-up{
+        padding-right: 2rem;
+        border-right: thin solid variables.$highlight-color--2;
+    }
+}

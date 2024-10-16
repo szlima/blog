@@ -66,6 +66,66 @@ a {
   font-size: 2rem;
 }
 
+.unavailable-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loading-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading-info .icon {
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.blog {
+  width: 100%;
+  height: 100%;
+  padding: 0 1rem;
+  background-color: #fff;
+}
+@media only screen and (min-width: 1200px) {
+  .blog {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 2rem;
+    border: 1px solid #f3e3f3;
+    border-radius: 1rem;
+  }
+}
+.blog--loading, .blog--unavailable {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+}
+@media only screen and (min-width: 1200px) {
+  .blog--loading, .blog--unavailable {
+    height: 70vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.blog--loading .icon, .blog--unavailable .icon {
+  font-size: 2rem;
+}
+
 .about {
   margin: auto;
   display: flex;
@@ -189,58 +249,6 @@ a {
   text-transform: lowercase;
 }
 
-.unavailable-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.loading-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.loading-info .icon {
-  animation: loading 1s linear infinite;
-}
-
-.blog {
-  width: 100%;
-  height: 100%;
-  padding: 0 1rem;
-  background-color: #fff;
-}
-@media only screen and (min-width: 1200px) {
-  .blog {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 2rem;
-    border: 1px solid #f3e3f3;
-    border-radius: 1rem;
-  }
-}
-.blog--loading, .blog--unavailable {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.3rem;
-}
-@media only screen and (min-width: 1200px) {
-  .blog--loading, .blog--unavailable {
-    height: 70vh;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-.blog--loading .icon, .blog--unavailable .icon {
-  font-size: 2rem;
-}
-
 .header {
   padding: 2rem 0;
   text-align: center;
@@ -333,6 +341,17 @@ a {
     flex-direction: row;
     gap: 2rem;
   }
+}
+
+.footer {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.5rem;
+  letter-spacing: 0.1rem;
+}
+.footer__dev {
+  color: #5d598f;
+  text-decoration: none;
 }
 
 .post-area {
@@ -468,6 +487,32 @@ a {
   font-weight: bold;
 }
 
+.share-bar {
+  padding-top: 1rem;
+  border-top: 1px solid #f3e3f3;
+  display: flex;
+  flex: 100%;
+  gap: 1rem;
+  list-style: none;
+}
+@media only screen and (min-width: 600px) {
+  .share-bar {
+    padding-top: 0;
+    border-top: none;
+    flex: initial;
+  }
+}
+.share-bar__option:first-of-type {
+  font-size: 0.9rem;
+}
+.share-bar__link {
+  color: #5d598f;
+  font-size: 1.2rem;
+}
+.share-bar__link:hover {
+  cursor: pointer;
+}
+
 .comment-area .comment-list__toggle-display {
   width: 100%;
   color: #5d598f;
@@ -593,32 +638,6 @@ a {
   letter-spacing: 2px;
 }
 .comment-area .comment-form__submit:hover {
-  cursor: pointer;
-}
-
-.share-bar {
-  padding-top: 1rem;
-  border-top: 1px solid #f3e3f3;
-  display: flex;
-  flex: 100%;
-  gap: 1rem;
-  list-style: none;
-}
-@media only screen and (min-width: 600px) {
-  .share-bar {
-    padding-top: 0;
-    border-top: none;
-    flex: initial;
-  }
-}
-.share-bar__option:first-of-type {
-  font-size: 0.9rem;
-}
-.share-bar__link {
-  color: #5d598f;
-  font-size: 1.2rem;
-}
-.share-bar__link:hover {
   cursor: pointer;
 }
 
@@ -757,26 +776,6 @@ a {
   background-color: #f3e3f3;
   border: thin solid #5d598f;
   cursor: default;
-}
-
-.footer {
-  padding: 1rem;
-  text-align: center;
-  font-size: 0.5rem;
-  letter-spacing: 0.1rem;
-}
-.footer__dev {
-  color: #5d598f;
-  text-decoration: none;
-}
-
-@keyframes loading {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 /*# sourceMappingURL=index.css.map */

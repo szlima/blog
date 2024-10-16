@@ -1,0 +1,43 @@
+@use "variables";
+@use "mixins";
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: .7s;
+    overflow-wrap: break-word;
+}
+
+body{
+    width: 100dvw;
+    min-height: 100dvh;
+
+    background-color: variables.$secondary-color--2;
+    color: variables.$default-color;
+
+    font-family: variables.$main-font;
+    font-size: 16px;
+
+    @include mixins.for-desktop-up{
+        padding: 2rem;
+    }
+}
+
+#root{
+    width: 100%;
+    height: 100%;
+}
+
+img{
+    max-width: 600px;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.icon{
+    font-size: 1.5rem;
+}

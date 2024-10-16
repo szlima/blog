@@ -1,0 +1,14 @@
+@use "../variables";
+
+.footer{
+    padding: 1rem;
+
+    text-align: center;
+    font-size: .5rem;
+    letter-spacing: .1rem;
+
+    &__dev{
+        color: variables.$main-color;
+        text-decoration: none;
+    }
+}

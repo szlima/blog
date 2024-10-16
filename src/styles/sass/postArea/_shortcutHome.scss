@@ -1,0 +1,18 @@
+@use "../variables";
+
+.shortcut-home{
+    width: 70%;
+    margin: 1rem auto 0;
+    padding-top: 1rem;
+
+    border-top: thin solid variables.$highlight-color--2;
+
+    font-weight: bold;
+    font-size: .9rem;
+    text-align: center;
+
+    &__link{
+        color: variables.$main-color;
+        text-decoration: none;
+    }
+}

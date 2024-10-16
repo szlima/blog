@@ -1,0 +1,57 @@
+@use "../variables";
+@use "../mixins";
+
+.pagination{
+
+    &__list{
+        display: flex;
+        justify-content: center;
+        gap: .5rem;
+
+        list-style: none;
+    }
+
+    &__option{
+        width: 2.5rem;
+        height: 2.5rem;
+
+        background-color: variables.$secondary-color--2;
+        color: variables.$main-color;
+        border-radius: 50%;
+        font-size: 1.1rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include mixins.for-desktop-up{
+            width: 2rem;
+            height: 2rem;
+
+            background-color: initial;
+            font-size: .9rem;
+        }
+
+        &:hover:not(&--disabled, &--selected){
+            background-color: variables.$highlight-color--1;
+            cursor: pointer;
+        }
+
+        &--selected{
+            color: variables.$secondary-color--1;
+            background-color: variables.$main-color;
+
+            &:hover{
+                cursor: default;
+            }
+        }
+
+        &--disabled{
+            color: variables.$secondary-color--1;
+
+            @include mixins.for-desktop-up{
+                color: variables.$secondary-color--2;
+            }
+        }
+    }
+}

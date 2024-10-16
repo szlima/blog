@@ -1,0 +1,68 @@
+@use "../variables";
+@use "../mixins";
+
+.contact{
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include mixins.for-desktop-up{
+        width: 70%;
+    }
+
+    &__heading{
+        margin: 0 auto 2rem;
+
+        font-size: 2rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+    }
+
+    &__phone,
+    &__email{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__social-media{
+        width: 70%;
+        margin: 1rem auto 0;
+        padding-top: 1rem;
+        border-top: 1px solid variables.$highlight-color--2;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+
+        @include mixins.for-desktop-up{
+            gap: 2rem;
+        }
+    }
+
+    &__link{
+        padding: .5rem .5rem .25rem;
+        border-radius: 50%;
+
+        color: variables.$main-color;
+        font-size: 1.3rem;
+
+        @include mixins.for-desktop-up{
+            font-size: 1.5rem;
+        }
+
+        &:hover{
+            background-color: variables.$highlight-color--1;
+        }
+    }
+
+    &__info{
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        text-transform: lowercase;
+    }
+}

@@ -1,0 +1,34 @@
+@use "../variables";
+@use "../mixins";
+
+.header{
+    padding: 2rem 0;
+    text-align: center;
+
+    @include mixins.for-desktop-up{
+        padding: 4rem 0;
+    }
+
+    &__heading{
+        font-family: variables.$highlight-font;
+        font-size: 2.5rem;
+
+        @include mixins.for-tablet-portrait-up{
+            font-size: 3.5rem;
+        }
+
+        @include mixins.for-desktop-up{
+            font-size: 5rem;
+        }
+    }
+
+    &__description{
+        margin: .5rem 0;
+
+        color: variables.$main-color;
+
+        font-size: .9rem;
+        letter-spacing: 2px;
+        text-transform: lowercase;
+    }
+}

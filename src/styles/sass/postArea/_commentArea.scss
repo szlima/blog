@@ -1,0 +1,189 @@
+@use "../variables";
+@use "../mixins";
+
+.comment-area{
+
+    .comment-list{
+
+        &__toggle-display{
+            width: 100%;
+            color: variables.$main-color;
+            background-color: transparent;
+            border: none;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .5rem;
+            position: relative;
+
+            font-weight: bold;
+
+            &:hover{
+                cursor: pointer;
+            }
+
+            &::before,
+            &::after{
+                width: 30%;
+                border-top: 1px solid variables.$main-color;
+
+                content: '';
+                position: absolute;
+                top: 50%;
+            }
+
+            &::before{
+                left: 0;
+            }
+
+            &::after{
+                right: 0;
+            }
+        }
+
+        &__heading{
+            margin: 2rem 0 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .comments{
+            padding-bottom: 2rem;
+            border-bottom: 1px solid variables.$main-color;
+
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            .comment{
+                padding: 1rem;
+                background-color: variables.$secondary-color--2;
+                border: 1px solid variables.$highlight-color--2;
+
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                &__author{
+
+                    &__name{
+                        margin-bottom: .1rem;
+                        color: variables.$main-color;
+
+                        font-size: .9rem;
+                        font-weight: bold;
+                    }
+
+                    &__email{
+                        font-size: .7rem;
+                        font-style: italic;
+                    }
+                }
+
+                &__body{
+                    margin-left: 1.5rem;
+                    font-size: .9rem;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+
+    .comment-form{
+        margin: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: .3rem;
+
+        &--completed,
+        &--unavailable,
+        &--required{
+            .comment-form__alert{
+                visibility: visible;
+            }
+        }
+
+        &--unavailable,
+        &--required{
+            .comment-form__alert{
+                color: variables.$error-color;
+            }
+        }
+
+        &--completed{
+            .comment-form__alert{
+                color: variables.$completed-color;
+            }
+        }
+
+        &--required{
+            .comment-form__field--textarea{
+                border-color: variables.$error-color;
+            }
+        }
+
+        &__heading{
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        &__alert{
+            height: 1rem;
+            font-size: .8em;
+            visibility: hidden;
+        }
+
+        &__wrapper{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: .5rem;
+        }
+
+        &__field,
+        &__submit{
+            padding: .5rem 1rem;
+            flex: 100%;
+
+            font-size: 1rem;
+            font-family: variables.$main-font;
+
+            &:focus{
+                outline: 2px solid variables.$highlight-color--1;
+            }
+        }
+
+        &__field{
+
+            &--input,
+            &--textarea{
+                color: variables.$default-color;
+                border: 1px solid variables.$main-color;
+            }
+
+            &--input{
+                @include mixins.for-desktop-up{
+                    flex: 1;
+                }
+            }
+
+            &--textarea{
+                height: 7rem;
+                resize: vertical;
+            }
+
+        }
+
+        &__submit{
+            color: variables.$secondary-color--1;
+            background-color: variables.$main-color;
+            border: none;
+            letter-spacing: 2px;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}

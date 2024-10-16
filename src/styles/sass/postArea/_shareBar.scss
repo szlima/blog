@@ -1,0 +1,31 @@
+@use "../variables";
+@use "../mixins";
+
+.share-bar{
+    padding-top: 1rem;
+    border-top: 1px solid variables.$highlight-color--2;
+    display: flex;
+    flex: 100%;
+    gap: 1rem;
+
+    list-style: none;
+
+    @include mixins.for-tablet-portrait-up{
+        padding-top: 0;
+        border-top: none;
+        flex: initial;
+    }
+
+    &__option:first-of-type{
+        font-size: .9rem;
+    }
+
+    &__link{
+        color: variables.$main-color;
+        font-size: 1.2rem;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,59 @@
+@use "../variables";
+@use "../mixins";
+
+.navbar{
+
+    &__list{
+        list-style: none;
+
+        &--active{
+            border-bottom: thin solid variables.$main-color;
+
+            .navbar__list__item{
+                display: block;
+                border-top: thin solid variables.$secondary-color--2;
+
+                @include mixins.for-desktop-up{
+                    border: none;
+                }
+            }
+        }
+
+        @include mixins.for-desktop-up{
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+
+            border-bottom: thin solid variables.$main-color;
+        }
+
+        &__item{
+            display: none;
+            padding: 1rem;
+
+            font-size: .9rem;
+            text-align: center;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+
+            &:first-child{
+                display: block;
+                background-color: variables.$secondary-color--2;
+            }
+
+            &:hover{
+                color: variables.$main-color;
+
+                cursor: pointer;
+            }
+
+            @include mixins.for-desktop-up{
+                display: block;
+
+                &:first-child{
+                    display: none;
+                }
+            }
+        }
+    }
+}
