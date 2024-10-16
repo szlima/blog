@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 
 import { PostContext } from '../../contexts/PostContext';
 
 import CommentArea from '../postComments/CommentArea';
+import PostFooter from './PostFooter';
 
 function FullPost(){
     const {currentPost: post}= useContext(PostContext);
@@ -18,9 +18,7 @@ function FullPost(){
                     <p key={id} className='post__content post__content--full'>{content}</p>
                 )
             }
-            <p className='post__author'>
-                <Link to={`/authors/${post.author.id}`}>{post.author.name}</Link>
-            </p>
+            <PostFooter />
             <CommentArea />
         </div>
     );
