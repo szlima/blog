@@ -7,18 +7,11 @@ import { BlogContext } from '../contexts/BlogContext';
 import { PostListContext } from '../contexts/PostListContext';
 import { PostContext } from '../contexts/PostContext';
 
-import LoadingInfo from '../components/incompleteData/LoadingInfo';
-import UnavailableInfo from '../components/incompleteData/UnavailableInfo';
+import ComponentLoader from '../components/incompleteData/ComponentLoader';
 import Blog from '../components/Blog';
 
-const mainComponents= {
-  [STATUS.loading]: <LoadingInfo />,
-  [STATUS.unavailable]: <UnavailableInfo info='Blog data'/>,
-  [STATUS.completed]: <Blog />
-};
-
 function MainPage() {
-  const {blogDataStatus: status}= useContext(BlogContext);
+  const {blogDataStatus}= useContext(BlogContext);
   const {resetPostListContext}= useContext(PostListContext);
   const {resetPostContext}= useContext(PostContext);
   const currentHref= useHref();
@@ -42,12 +35,14 @@ function MainPage() {
     setPreviousHref(currentHref);
   };
 
-  const getStatusClass= () => (status === STATUS.completed) ?
-    '' : `blog--${status}`;
+  const getStatusClass= () => (blogDataStatus === STATUS.completed) ?
+    '' : `blog--${blogDataStatus}`;
 
   return (
     <div className={`blog ${getStatusClass()}`}>
-      {mainComponents[status]}
+      <ComponentLoader status={blogDataStatus} infoName='Blog data'>
+        <Blog />
+      </ComponentLoader>
     </div>
   );
 }
