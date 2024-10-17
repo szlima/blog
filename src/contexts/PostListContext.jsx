@@ -1,8 +1,8 @@
 import { createContext, useContext, useState } from 'react';
 
 import { getPostListInfo } from '../utils/apiFunctions';
-import { parseNaturalNumber } from '../utils/dataFunctions';
-import { STATUS } from '../utils/dataInfo';
+import { parseNaturalNumber, showErrorMessage } from '../utils/dataFunctions';
+import { DATA_TYPE, ERROR_TYPE, STATUS } from '../utils/dataInfo';
 
 import { BlogContext } from './BlogContext';
 
@@ -45,8 +45,8 @@ function PostListProvider({children}){
                 setTotalPages(newTotalPages);
                 setPosts(newPosts);
                 validateLoading(page, newTotalPages);
-            }).catch(() => {
-                console.error('Loading error: Post list unavailable.');
+            }).catch(e => {
+                showErrorMessage(e, ERROR_TYPE.loading, DATA_TYPE.postList);
                 setPostListStatus(STATUS.unavailable);
             }).finally(() => {
                 setCurrentPage(page);

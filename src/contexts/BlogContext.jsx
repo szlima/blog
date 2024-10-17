@@ -1,7 +1,8 @@
 import { createContext, useState, useEffect } from 'react';
 
 import { getBlogData } from '../utils/apiFunctions';
-import { STATUS } from '../utils/dataInfo';
+import { showErrorMessage } from '../utils/dataFunctions';
+import { DATA_TYPE, ERROR_TYPE, STATUS } from '../utils/dataInfo';
 
 // ------------------------------------
 
@@ -37,8 +38,8 @@ function BlogProvider({children}){
                 setOwner(data.owner);
                 setAuthors(data.authors);
                 setBlogDataStatus(STATUS.completed);
-            }).catch(() => {
-                console.error('Loading error: Blog data unavailable.');
+            }).catch(e => {
+                showErrorMessage(e, ERROR_TYPE.loading, DATA_TYPE.blogData);
                 setBlogDataStatus(STATUS.unavailable);
             });
     };

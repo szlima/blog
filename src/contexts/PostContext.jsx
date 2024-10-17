@@ -1,8 +1,8 @@
 import { createContext, useState } from 'react';
 
-import { parseNaturalNumber, isEmpty } from '../utils/dataFunctions';
 import { getPost, getComments, sendComment } from '../utils/apiFunctions';
-import { STATUS } from '../utils/dataInfo';
+import { isEmpty, parseNaturalNumber, showErrorMessage } from '../utils/dataFunctions';
+import { DATA_TYPE, ERROR_TYPE, STATUS } from '../utils/dataInfo';
 
 // ------------------------------------
 
@@ -43,8 +43,8 @@ function PostProvider({children}){
             .then(data => {
                 setCurrentPost(data);
                 validateLoading(data);
-            }).catch(() => {
-                console.error('Loading error: Post unavailable.');
+            }).catch(e => {
+                showErrorMessage(e, ERROR_TYPE.loading, DATA_TYPE.post);
                 setPostStatus(STATUS.unavailable);
             });
     };
@@ -69,8 +69,8 @@ function PostProvider({children}){
                 const comments= data.concat(commentList);
                 setCommentList(comments);
                 setCommentListStatus(STATUS.completed);
-            }).catch(() => {
-                console.error('Loading error: Comment list unavailable.');
+            }).catch(e => {
+                showErrorMessage(e, ERROR_TYPE.loading, DATA_TYPE.commentList);
                 setCommentListStatus(STATUS.unavailable);
             });
     };
@@ -94,8 +94,8 @@ function PostProvider({children}){
                 comments.push(data);
                 setCommentList(comments);
                 setNewCommentStatus(STATUS.completed);
-            }).catch(() => {
-                console.error('Submission error: Comment not sent.');
+            }).catch(e => {
+                showErrorMessage(e, ERROR_TYPE.submission, DATA_TYPE.comment);
                 setNewCommentStatus(STATUS.unavailable);
             });
     };

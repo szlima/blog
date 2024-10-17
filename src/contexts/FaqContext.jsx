@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 
 import { getFAQ } from '../utils/apiFunctions';
-import { STATUS } from '../utils/dataInfo';
+import { showErrorMessage } from '../utils/dataFunctions';
+import { DATA_TYPE, ERROR_TYPE, STATUS } from '../utils/dataInfo';
 
 // ------------------------------------
 
@@ -23,8 +24,8 @@ function FaqProvider({children}){
             .then(data => {
                 setFaq(data);
                 setFaqStatus(STATUS.completed);
-            }).catch(() => {
-                console.error('Loading error: FAQ unavailable.');
+            }).catch(e => {
+                showErrorMessage(e, ERROR_TYPE.loading, DATA_TYPE.faq);
                 setFaqStatus(STATUS.unavailable);
             });
     }, []);

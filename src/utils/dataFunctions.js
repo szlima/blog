@@ -9,6 +9,10 @@ const getUnavailabilityClass= data => {
 
 const parseNaturalNumber= number => (number > 0) ? parseInt(number) : undefined;
 
+const showErrorMessage= (e, errorType, data) => console.error(
+    `Code: ${e.code} - Status: ${e.status}\n${errorType}: ${data} unavailable.`
+);
+
 // ---------- ----------
 
-export {isEmpty, getUnavailabilityClass, parseNaturalNumber};
+export {isEmpty, getUnavailabilityClass, parseNaturalNumber, showErrorMessage};
